@@ -1,4 +1,4 @@
-import {FaClipboardList, FaRegLightbulb, FaMoneyBillWave, FaRegNewspaper, FaCircleUser, FaDoorOpen} from 'react-icons/fa6';
+import {FaClipboardList, FaRegLightbulb, FaMoneyBillWave, FaRegNewspaper, FaCircleUser, FaRightFromBracket} from 'react-icons/fa6';
 
 const SideBar = () => {
   return (
@@ -24,7 +24,7 @@ const SideBar = () => {
           <FaCircleUser className='inline-block mr-2 text-lg'/> Profile
         </button>
         <button className="hover:bg-slate-300 mt-2 w-full border border-solid border-gray-400 p-2 rounded-md">
-          <FaDoorOpen className='inline-block mr-2 text-lg'/>Log Out
+          <FaRightFromBracket className='inline-block mr-2 text-lg'/>Log Out
         </button>
       </div>
     </div>
