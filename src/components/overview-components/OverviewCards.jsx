@@ -1,11 +1,4 @@
-import { 
-    FaWallet, 
-    FaEllipsisVertical, 
-    FaArrowRightToBracket, 
-    FaArrowRightFromBracket, 
-    FaArrowTrendUp, 
-    FaArrowTrendDown 
-  } from 'react-icons/fa6';
+import {FaWallet, FaPenToSquare, FaArrowRightToBracket, FaArrowRightFromBracket, FaArrowTrendUp, FaArrowTrendDown} from 'react-icons/fa6';
   
   const OverviewCards = () => {
     return (
@@ -13,13 +6,13 @@ import {
         <h1 className="font-bold text-lg mb-2">Overview</h1>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mr-4">
           {/* Card 1 */}
-          <article className="flex flex-col border rounded-lg text-black shadow-md relative cursor-pointer overflow-hidden">
+          <article className="flex flex-col border rounded-lg text-black shadow-md relative overflow-hidden">
             <div className="flex-1 bg-blue-200 w-full p-3 rounded-tr-lg rounded-tl-lg">
               <div className="flex justify-between items-center mb-6">
                 <FaWallet className="text-xl" />
                 <span className="font-semibold text-xl">Balance</span>
                 <button className="text-gray-500">
-                  <FaEllipsisVertical />
+                  <FaPenToSquare />
                 </button>
               </div>
             </div>
@@ -32,13 +25,13 @@ import {
           </article>
   
           {/* Card 2 */}
-          <article className="flex flex-col border rounded-lg text-black shadow-md relative cursor-pointer overflow-hidden">
+          <article className="flex flex-col border rounded-lg text-black shadow-md relative overflow-hidden">
             <div className="flex-1 bg-purple-200 w-full p-3 rounded-tr-lg rounded-tl-lg">
               <div className="flex justify-between items-center mb-6">
                 <FaArrowRightToBracket className="text-xl" />
                 <span className="font-semibold text-xl">Income</span>
                 <button className="text-gray-500">
-                  <FaEllipsisVertical />
+                  <FaPenToSquare />
                 </button>
               </div>
             </div>
@@ -51,17 +44,17 @@ import {
           </article>
   
           {/* Card 3 */}
-          <article className="flex flex-col border rounded-lg text-black shadow-md relative cursor-pointer overflow-hidden">
+          <article className="flex flex-col border rounded-lg text-black shadow-md relative overflow-hidden">
             <div className="flex-1 bg-green-200 w-full p-3 rounded-tr-lg rounded-tl-lg">
               <div className="flex justify-between items-center mb-6">
                 <FaArrowRightFromBracket className="text-xl" />
                 <span className="font-semibold text-xl">Expenses</span>
                 <button className="text-gray-500">
-                  <FaEllipsisVertical />
+                  <FaPenToSquare />
                 </button>
               </div>
             </div>
-            <div className="flex-2 bg-green-100 w-full p-3 rounded-br-lg rounded-bl-lg">
+            <div className="flex-2 bg-green-100 w-full items-center p-3 rounded-br-lg rounded-bl-lg">
               <div className="text-3xl font-bold mb-2">$842</div>
               <div className="text-red-500 text-sm flex items-center gap-1">
                 -2% <FaArrowTrendDown />

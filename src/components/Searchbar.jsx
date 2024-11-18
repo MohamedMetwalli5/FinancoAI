@@ -9,7 +9,7 @@ const Searchbar = () => {
     <>
       <div className="p-1 flex items-center justify-between bg-slate-300 rounded-full">
         <input
-          className="flex-1 m-1 rounded-full p-2 w-full"
+          className="flex-1 m-1 rounded-full p-2 w-full bg-slate-100"
           placeholder="Search"
           onFocus={() => setOpen(true)}
         />
