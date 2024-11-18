@@ -2,7 +2,7 @@ import {FaClipboardList, FaRegLightbulb, FaMoneyBillWave, FaRegNewspaper, FaCirc
 
 const SideBar = () => {
   return (
-    <div className="fixed left-0 top-0 h-screen w-64 bg-slate-100 text-black p-2 text-center font-bold rounded-lg flex flex-col justify-between">
+    <div className="relative left-0 top-0 h-screen w-64 bg-slate-100 text-black p-2 text-center font-bold rounded-lg flex flex-col justify-between">
       <div>
         <h1 className="text-lg mb-5">FinancoAI</h1>
         <button className="hover:bg-slate-300 mt-2 w-full border border-solid border-gray-400 p-2 rounded-md">

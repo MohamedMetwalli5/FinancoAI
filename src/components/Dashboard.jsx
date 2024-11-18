@@ -1,5 +1,5 @@
 import Overview from "./dashboard-components/Overview";
-import Transactions from "./dashboard-components/Transactions";
+import Stocks from "./dashboard-components/Stocks";
 import Header from "./Header";
 
 const Dashboard = () => {
@@ -9,8 +9,8 @@ const Dashboard = () => {
   return (
     <>
       <Header />
-      {/* <Overview /> */}
-      {/* <Transactions /> */}
+      <Overview />
+      <Stocks />
     </>
   );
 };
