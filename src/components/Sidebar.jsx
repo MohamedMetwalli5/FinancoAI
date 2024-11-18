@@ -1,4 +1,4 @@
-import { FaClipboardList, FaRegLightbulb, FaMoneyBillWave, FaRegNewspaper, FaCircleUser, FaRightFromBracket } from 'react-icons/fa6';
+import { FaClipboardList, FaRobot, FaRegNewspaper, FaCircleUser, FaRightFromBracket } from 'react-icons/fa6';
 
 const SideBar = () => {
   return (
@@ -10,10 +10,7 @@ const SideBar = () => {
           <FaClipboardList className="mr-4 text-xl text-gray-700"/> Dashboard
         </button>
         <button className="flex items-center justify-start w-full p-3 mb-2 rounded-lg bg-gray-100 hover:bg-gray-200 transition-all">
-          <FaRegLightbulb className="mr-4 text-xl text-gray-700" /> Analytics
-        </button>
-        <button className="flex items-center justify-start w-full p-3 mb-2 rounded-lg bg-gray-100 hover:bg-gray-200 transition-all">
-          <FaMoneyBillWave className="mr-4 text-xl text-gray-700" /> Investments
+          <FaRobot className="mr-4 text-xl text-gray-700" /> AI Models
         </button>
         <button className="flex items-center justify-start w-full p-3 mb-2 rounded-lg bg-gray-100 hover:bg-gray-200 transition-all">
           <FaRegNewspaper className="mr-4 text-xl text-gray-700" /> Market News
