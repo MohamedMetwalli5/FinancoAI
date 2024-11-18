@@ -1,5 +1,5 @@
 import React from 'react'
-import { FaArrowUp } from "react-icons/fa6";
+import { FaCircleMinus, FaArrowUp } from "react-icons/fa6";
 
 const StocksWatchList = () => {
   return (
@@ -10,6 +10,7 @@ const StocksWatchList = () => {
                 <button className='bg-blue-100 rounded-lg p-2 text-gray-500 hover:bg-blue-200'>Add New</button>
             </div>
             <div className='flex m-auto justify-between items-center border-y p-1'>
+                <FaCircleMinus className='cursor-pointer text-red-500'/>
                 <div>
                     <h2 className='text-md font-bold'>ADS</h2>
                     <h4 className='text-sm'>Adidas AG</h4>
@@ -24,6 +25,7 @@ const StocksWatchList = () => {
             </div>
             
             <div className='flex m-auto justify-between items-center border-y p-1'>
+                <FaCircleMinus className='cursor-pointer text-red-500'/>
                 <div>
                     <h2 className='text-md font-bold'>AAPL</h2>
                     <h4 className='text-sm'>Apple Inc</h4>
@@ -38,6 +40,7 @@ const StocksWatchList = () => {
             </div>
 
             <div className='flex m-auto justify-between items-center border-y p-1'>
+                <FaCircleMinus className='cursor-pointer text-red-500'/>
                 <div>
                     <h2 className='text-md font-bold'>NYSE</h2>
                     <h4 className='text-sm'>Nike Inc</h4>
@@ -52,6 +55,7 @@ const StocksWatchList = () => {
             </div>
 
             <div className='flex m-auto justify-between items-center border-y p-1'>
+            <FaCircleMinus className='cursor-pointer text-red-500'/>
                 <div>
                     <h2 className='text-md font-bold'>BMW</h2>
                     <h4 className='text-sm'>Bayerische MW</h4>
