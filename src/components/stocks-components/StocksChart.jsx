@@ -22,13 +22,13 @@ ChartJS.register(
 );
 
 const StocksChart = () => {
-  // Data mimicking stock prices
+  // Updated data with consistent length
   const data = {
-    labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
+    labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep"],
     datasets: [
       {
         label: "Stock A",
-        data: [150, 200, 180, 220, 250, 230],
+        data: [150, 200, 180, 220, 250, 230, 260, 270, 280],
         borderColor: "rgba(46, 204, 113, 1)",
         backgroundColor: "rgba(46, 204, 113, 0.2)",
         pointBackgroundColor: "rgba(46, 204, 113, 1)",
@@ -38,7 +38,7 @@ const StocksChart = () => {
       },
       {
         label: "Stock B",
-        data: [250, 240, 260, 280, 290, 300],
+        data: [230, 210, 220, 250, 240, 260, 280, 290, 300],
         borderColor: "rgba(231, 76, 60, 1)",
         backgroundColor: "rgba(231, 76, 60, 0.2)",
         pointBackgroundColor: "rgba(231, 76, 60, 1)",
@@ -49,9 +49,9 @@ const StocksChart = () => {
     ],
   };
 
-  // Chart options for a light theme
   const options = {
     responsive: true,
+    maintainAspectRatio: false,
     plugins: {
       legend: {
         position: "top",
@@ -64,7 +64,7 @@ const StocksChart = () => {
         text: "Your Stocks Performance",
         color: "#333333",
         font: {
-          size: 16,
+          size: 18,
         },
       },
       tooltip: {
@@ -87,16 +87,19 @@ const StocksChart = () => {
       y: {
         ticks: {
           color: "#333333",
+          stepSize: 50,
         },
         grid: {
           color: "#eeeeee",
         },
+        min: 100,
+        max: 350,
       },
     },
   };
 
   return (
-    <div className="flex-1 w-full sm:w-96 h-72 mx-auto bg-white p-4 rounded-lg shadow-lg">
+    <div className="w-full h-96 mx-auto bg-white p-4 rounded-lg">
       <Line data={data} options={options} />
     </div>
   );

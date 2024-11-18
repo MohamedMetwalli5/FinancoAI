@@ -7,7 +7,6 @@ const Overview = () => {
         <OverviewCards/>
         <OverviewChart/>
     </div>
-   
   )
 }
 

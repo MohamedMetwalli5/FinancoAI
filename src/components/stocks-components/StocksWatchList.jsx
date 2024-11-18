@@ -7,7 +7,7 @@ const StocksWatchList = () => {
         <div className='flex-col'>
             <div className='flex justify-between items-center mb-5'>
                 <h1 className='text-lg font-bold'>Watchlist</h1>
-                <button className='bg-blue-100 rounded-lg p-2 text-gray-500'>Add New</button>
+                <button className='bg-blue-100 rounded-lg p-2 text-gray-500 hover:bg-blue-200'>Add New</button>
             </div>
             <div className='flex m-auto justify-between items-center border-y p-1'>
                 <div>
