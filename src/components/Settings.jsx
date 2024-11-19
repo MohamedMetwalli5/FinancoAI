@@ -42,6 +42,16 @@ const Settings = () => {
           <option value="gmt">GMT (Greenwich Mean Time)</option>
         </select>
       </div>
+      
+      <div className='flex items-center gap-3 mb-4'>
+        <label htmlFor="password" className='w-24'>ChatGPT API Key</label>
+        <input
+          id="ChatGPTAPIKey"
+          type="password"
+          className="rounded-md p-2 w-full bg-slate-100 dark:bg-gray-700 dark:text-white"
+          placeholder="Enter your ChatGPT API Key"
+        />
+      </div>
 
       <div className='flex items-center gap-3 mb-4'>
         <h3 className="text-xl font-medium">Email Notifications</h3>
@@ -67,6 +77,11 @@ const Settings = () => {
           <span className="absolute inset-0 bg-gray-300 transition-colors rounded-full peer-checked:bg-blue-500 peer-focus:ring-2 peer-focus:ring-blue-500 peer-focus:ring-offset-2"></span>
           <span className="absolute left-1 top-1 w-6 h-6 bg-white rounded-full transition-transform transform peer-checked:translate-x-8"></span>
         </label>
+      </div>
+      <div className="flex items-center gap-3 mb-2">
+        <button className="text-purple-500 bg-purple-100 p-2 px-5 rounded-md">
+          Save 
+        </button>
       </div>
 
       <div className="flex items-center gap-3 mt-14 mb-2">

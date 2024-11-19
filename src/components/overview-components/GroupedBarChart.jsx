@@ -5,8 +5,17 @@ import { Chart as ChartJS, CategoryScale, BarElement, Title, Tooltip, Legend } f
 ChartJS.register(CategoryScale, BarElement, Title, Tooltip, Legend);
 
 const GroupedBarChart = () => {
+
+  const LastThreeMonthsAbbreviations = []
+  const MonthAbbreviations = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+  const now = new Date();
+  for(let i = 0; i < 3; i++) {
+    const MonthIndex = (now.getMonth()-i+12) % 12;
+    LastThreeMonthsAbbreviations.unshift(MonthAbbreviations[MonthIndex]);
+  }
+
   const data = {
-    labels: ['Month 1', 'Month 2', 'Month 3'],
+    labels: [LastThreeMonthsAbbreviations[0], LastThreeMonthsAbbreviations[1], LastThreeMonthsAbbreviations[2]],
     datasets: [
       {
         label: 'Balance',
