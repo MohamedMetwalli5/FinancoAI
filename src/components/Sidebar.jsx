@@ -1,4 +1,4 @@
-import { FaClipboardList, FaRobot, FaRegNewspaper, FaCircleUser, FaRightFromBracket } from 'react-icons/fa6';
+import { FaClipboardList, FaRobot, FaRegNewspaper, FaGear, FaRightFromBracket } from 'react-icons/fa6';
 import { useNavigate } from 'react-router-dom';
 
 const SideBar = () => {
@@ -22,8 +22,8 @@ const SideBar = () => {
       </div>
 
       <div>
-        <button className="flex items-center justify-start w-full p-3 mt-4 mb-2 rounded-lg bg-gray-100 hover:bg-gray-200 transition-all">
-          <FaCircleUser className="mr-4 text-xl text-gray-700" /> Profile
+        <button onClick={() => navigate('/profile')} className="flex items-center justify-start w-full p-3 mt-4 mb-2 rounded-lg bg-gray-100 hover:bg-gray-200 transition-all">
+          <FaGear className="mr-4 text-xl text-gray-700" /> Settings
         </button>
         <button className="flex items-center justify-start w-full p-3 mb-2 rounded-lg bg-gray-100 hover:bg-gray-200 transition-all">
           <FaRightFromBracket className="mr-4 text-xl text-gray-700" /> Log Out

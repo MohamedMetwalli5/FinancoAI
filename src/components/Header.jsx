@@ -1,11 +1,13 @@
 import Notifications from "../components/notifications/Notifications";
 import NoNotifications from "../components/notifications/NoNotifications";
 import Searchbar from "./Searchbar";
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
   const name = "Mohamed";
   const ThereAreNotifications = false;
-  
+  const navigate = useNavigate();
+
   return (
     <>
       <div className="flex items-center justify-between pb-4 p-1">
@@ -19,12 +21,12 @@ const Header = () => {
             <Searchbar/> 
           </div>
           {ThereAreNotifications == true? <Notifications /> : <NoNotifications />}
-          <div className="flex items-center justify-center p-4">
+          <div onClick={() => navigate('/profile')} className="flex items-center justify-center p-4 cursor-pointer">
             <h3 className="font-bold text-black mr-2">{name} </h3>
             <img
               src="/src/assets/images/PersonalPhoto.png"
               alt="Profile Photo"
-              className="w-10 h-10 rounded-full cursor-pointer object-cover"
+              className="w-10 h-10 rounded-full object-cover"
             />
           </div>
         </div>
