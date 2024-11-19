@@ -25,8 +25,8 @@ const SideBar = () => {
         <button onClick={() => navigate('/settings')} className="flex items-center justify-start w-full p-3 mt-4 mb-2 rounded-lg bg-gray-100 hover:bg-gray-200 transition-all">
           <FaGear className="mr-4 text-xl text-gray-700" /> Settings
         </button>
-        <button className="flex items-center justify-start w-full p-3 mb-2 rounded-lg bg-gray-100 hover:bg-gray-200 transition-all">
-          <FaRightFromBracket className="mr-4 text-xl text-gray-700" /> Log Out
+        <button className="flex items-center justify-start w-full p-3 mb-2 rounded-lg bg-gray-100 hover:bg-red-200 transition-all">
+          <FaRightFromBracket className="mr-4 text-xl text-gray-700" /> Sign Out
         </button>
       </div>
     </div>
