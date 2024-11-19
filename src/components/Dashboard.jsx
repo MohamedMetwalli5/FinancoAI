@@ -8,7 +8,6 @@ const Dashboard = () => {
   
   return (
     <>
-      <Header />
       <Overview />
       <Stocks />
     </>

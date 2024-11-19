@@ -24,7 +24,7 @@ const Header = () => {
             <img
               src="/src/assets/images/PersonalPhoto.png"
               alt="Profile Photo"
-              className="w-10 h-10 rounded-full cursor-pointer"
+              className="w-10 h-10 rounded-full cursor-pointer object-cover"
             />
           </div>
         </div>
