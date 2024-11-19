@@ -2,6 +2,9 @@ import React from 'react'
 import { FaCircleMinus, FaArrowUp } from "react-icons/fa6";
 
 const StocksWatchList = () => {
+  
+//   const StocksWatchList = [{abbreviation:"ADS", name:"Adidas AG", value:"53,49$", percentage:"0.76%"}] ToDo: Adding the logic and handling the up and down valuation icons accordingly
+
   return (
     <div className='flex-1 bg-white rounded-lg p-2'>
         <div className='flex-col'>
