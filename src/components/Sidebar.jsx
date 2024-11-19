@@ -8,13 +8,13 @@ const SideBar = () => {
   return (
     <div className="fixed left-0 top-0 h-screen w-64 bg-white text-gray-800 p-4 text-center font-bold rounded-r-lg shadow-md flex flex-col justify-between">
       <div>
-        <h1 className="text-2xl font-semibold mb-8 text-gray-800">FinancoAI</h1>
+        <h1 onClick={() => navigate('/')} className="text-2xl font-semibold mb-8 text-gray-800 cursor-pointer">FinancoAI</h1>
         
         <button onClick={() => navigate('/')} className="flex items-center justify-start w-full p-3 mt-4 mb-2 rounded-lg bg-gray-100 hover:bg-gray-200 transition-all">
           <FaClipboardList className="mr-4 text-xl text-gray-700"/> Dashboard
         </button>
         <button className="flex items-center justify-start w-full p-3 mb-2 rounded-lg bg-gray-100 hover:bg-gray-200 transition-all">
-          <FaRobot className="mr-4 text-xl text-gray-700" /> AI Models
+          <FaRobot onClick={() => navigate('/ai-models')} className="mr-4 text-xl text-gray-700" /> AI Models
         </button>
         <button onClick={() => navigate('/market-news')} className="flex items-center justify-start w-full p-3 mb-2 rounded-lg bg-gray-100 hover:bg-gray-200 transition-all">
           <FaRegNewspaper className="mr-4 text-xl text-gray-700" /> Market News
@@ -22,7 +22,7 @@ const SideBar = () => {
       </div>
 
       <div>
-        <button onClick={() => navigate('/profile')} className="flex items-center justify-start w-full p-3 mt-4 mb-2 rounded-lg bg-gray-100 hover:bg-gray-200 transition-all">
+        <button onClick={() => navigate('/settings')} className="flex items-center justify-start w-full p-3 mt-4 mb-2 rounded-lg bg-gray-100 hover:bg-gray-200 transition-all">
           <FaGear className="mr-4 text-xl text-gray-700" /> Settings
         </button>
         <button className="flex items-center justify-start w-full p-3 mb-2 rounded-lg bg-gray-100 hover:bg-gray-200 transition-all">

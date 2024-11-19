@@ -21,7 +21,7 @@ const Header = () => {
             <Searchbar/> 
           </div>
           {ThereAreNotifications == true? <Notifications /> : <NoNotifications />}
-          <div onClick={() => navigate('/profile')} className="flex items-center justify-center p-4 cursor-pointer">
+          <div onClick={() => navigate('/settings')} className="flex items-center justify-center p-4 cursor-pointer">
             <h3 className="font-bold text-black mr-2">{name} </h3>
             <img
               src="/src/assets/images/PersonalPhoto.png"

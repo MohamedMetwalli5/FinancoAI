@@ -6,6 +6,7 @@ import './index.css';
 import HomePage from './pages/HomePage.jsx';
 import MarketNewsPage from './pages/MarketNewsPage.jsx';
 import SettingsPage from './pages/SettingsPage.jsx';
+import AIModelsPage from './pages/AIModelsPage.jsx';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -13,7 +14,8 @@ createRoot(document.getElementById('root')).render(
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/market-news" element={<MarketNewsPage />} />
-        <Route path="/profile" element={<SettingsPage />} />
+        <Route path="/ai-models" element={<AIModelsPage />} />
+        <Route path="/settings" element={<SettingsPage />} />
       </Routes>
     </Router>
   </StrictMode>
