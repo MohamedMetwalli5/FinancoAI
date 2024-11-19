@@ -1,6 +1,10 @@
 import { FaClipboardList, FaRobot, FaRegNewspaper, FaCircleUser, FaRightFromBracket } from 'react-icons/fa6';
+import { useNavigate } from 'react-router-dom';
 
 const SideBar = () => {
+
+  const navigate = useNavigate();
+
   return (
     <div className="fixed left-0 top-0 h-screen w-64 bg-white text-gray-800 p-4 text-center font-bold rounded-r-lg shadow-md flex flex-col justify-between">
       <div>
@@ -12,7 +16,7 @@ const SideBar = () => {
         <button className="flex items-center justify-start w-full p-3 mb-2 rounded-lg bg-gray-100 hover:bg-gray-200 transition-all">
           <FaRobot className="mr-4 text-xl text-gray-700" /> AI Models
         </button>
-        <button className="flex items-center justify-start w-full p-3 mb-2 rounded-lg bg-gray-100 hover:bg-gray-200 transition-all">
+        <button onClick={() => navigate('/market-news')} className="flex items-center justify-start w-full p-3 mb-2 rounded-lg bg-gray-100 hover:bg-gray-200 transition-all">
           <FaRegNewspaper className="mr-4 text-xl text-gray-700" /> Market News
         </button>
       </div>
