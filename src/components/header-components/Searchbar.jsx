@@ -1,5 +1,5 @@
 import { FaMagnifyingGlass } from "react-icons/fa6";
-import { CommandMenu } from "./CommandMenu";
+import { CommandMenu } from "../header-components/CommandMenu";
 import React, { useState } from "react";
 
 const Searchbar = () => {

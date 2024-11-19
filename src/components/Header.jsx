@@ -1,6 +1,6 @@
 import Notifications from "../components/notifications/Notifications";
 import NoNotifications from "../components/notifications/NoNotifications";
-import Searchbar from "./Searchbar";
+import Searchbar from "./header-components/Searchbar";
 import { useNavigate } from "react-router-dom";
 
 const Header = () => {
