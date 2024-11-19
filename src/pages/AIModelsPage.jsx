@@ -49,7 +49,7 @@ const AIModelsPage = () => {
               <div className="flex items-center border border-gray-300 rounded-lg overflow-hidden bg-white shadow-sm">
                 <input
                   type="text"
-                  placeholder="Ask FinancoAI..."
+                  placeholder="Message FinancoAI"
                   className="flex-grow p-4 focus:outline-none"
                 />
                 <button className="bg-purple-500 text-white px-6 py-2 hover:bg-purple-600">
