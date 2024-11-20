@@ -12,12 +12,12 @@ const OverviewCards =  () => {
   const fetchTransactions = async () => {
     try {
       const response = await axios.get("http://localhost:5000/transactions");
-      console.log("Fetched Transactions:", response.data);
+      // console.log("Fetched Transactions:", response.data);
       setTransactions(response.data); // Storing data in the state
     } catch (error) {
       console.error("Error fetching transactions:", error);
     }
-  };
+  };  
 
   useEffect(() => {
     fetchTransactions();  
@@ -32,7 +32,7 @@ const OverviewCards =  () => {
       icon: <FaWallet />,
       title: "Balance",
       amount: transactions.filter((t) => t.category === "Balance")
-                          .reduce((sum, t) => sum+t.amount, 0),
+                          .reduce((sum, t) => sum+Number(t.amount), 0),
       percentage: "+12%",
       trendIcon: <FaArrowTrendUp />,
       bgColor: "bg-blue-200",
@@ -42,7 +42,7 @@ const OverviewCards =  () => {
       icon: <FaArrowRightToBracket />,
       title: "Income",
       amount: transactions.filter((t) => t.category === "Income")
-                          .reduce((sum, t) => sum+t.amount, 0),
+                          .reduce((sum, t) => sum+Number(t.amount), 0),
       percentage: "+4%",
       trendIcon: <FaArrowTrendUp />,
       bgColor: "bg-purple-200",
@@ -52,7 +52,7 @@ const OverviewCards =  () => {
       icon: <FaArrowRightFromBracket />,
       title: "Expenses",
       amount: transactions.filter((t) => t.category === "Expenses")
-                          .reduce((sum, t) => sum+t.amount, 0),
+                          .reduce((sum, t) => sum+Number(t.amount), 0),
       percentage: "-2%",
       trendIcon: <FaArrowTrendDown />,
       bgColor: "bg-green-200",

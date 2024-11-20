@@ -22,6 +22,7 @@ const CardPopupForm = ({ isOpen, togglePopup, PopupFormTitle }) => {
     event.preventDefault();
   
     const transaction = {
+      category: formData.category,
       amount: formData.amount,
       description: formData.description,
       date: formData.date,
