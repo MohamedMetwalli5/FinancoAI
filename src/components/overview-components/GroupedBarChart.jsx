@@ -1,27 +1,19 @@
-import React from 'react';
-import { Bar } from 'react-chartjs-2'
-import { Chart as ChartJS, CategoryScale, BarElement, Title, Tooltip, Legend } from 'chart.js'; 
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
+import { Bar } from 'react-chartjs-2';
+import { Chart as ChartJS, CategoryScale, BarElement, Title, Tooltip, Legend } from 'chart.js';
 import axios from 'axios'; 
 
 ChartJS.register(CategoryScale, BarElement, Title, Tooltip, Legend);
 
 const GroupedBarChart = () => {
-
-  const LastThreeMonthsAbbreviations = []
   const MonthAbbreviations = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-  const now = new Date();
-  for(let i = 0; i < 3; i++) {
-    const MonthIndex = (now.getMonth()-i+12) % 12;
-    LastThreeMonthsAbbreviations.unshift(MonthAbbreviations[MonthIndex]);
-  }
-
-  const [ChartData, setChartData] = useState([])
+  
+  const [ChartData, setChartData] = useState([]);
+  const [last3MonthsSum, setLast3MonthsSum] = useState([]);
 
   const fetchTransactions = async () => {
     try {
       const response = await axios.get("http://localhost:5000/transactions");
-      // console.log("The Fetched Transactions:", response.data);
       setChartData(response.data);
     } catch (error) {
       console.error("Error fetching transactions:", error);
@@ -30,47 +22,70 @@ const GroupedBarChart = () => {
 
   useEffect(() => {
     fetchTransactions();
-  }, [])
+  }, []);
   
-  const categories = ["Balance", "Income", "Expenses"];
+  useEffect(() => {
+    if (ChartData.length === 0) return;
 
-  
+    const categories = ["Balance", "Income", "Expenses"];
+    const monthlySums = categories.map(() => [0, 0, 0]); // Initialize array for each category
+
+    const currentDate = new Date();
+    const currentMonth = currentDate.getMonth();
+    const currentYear = currentDate.getFullYear();
+    
+    // Looping through each category and calculate sums
+    categories.forEach((category, categoryIndex) => {
+      for(let monthOffset = 0; monthOffset < 3; monthOffset++) {
+        const targetMonth = (currentMonth - monthOffset + 12) % 12;
+        const targetYear = (currentMonth - monthOffset < 0) ? currentYear - 1 : currentYear;
+
+        // Filtering and suming amounts
+        const sumForMonth = ChartData.filter(item => {
+          const itemDate = new Date(item.date);
+          return item.category === category &&
+                 itemDate.getMonth() === targetMonth &&
+                 itemDate.getFullYear() === targetYear;
+        }).reduce((sum, item) => sum + Number(item.amount), 0);
+
+        monthlySums[categoryIndex][monthOffset] = sumForMonth;
+      }
+    });
+
+    setLast3MonthsSum(monthlySums);
+  }, [ChartData]);
+
+  const LastThreeMonthsAbbreviations = [...Array(3)].map((_, i) => {
+    const targetMonth = (new Date().getMonth() - i + 12) % 12;
+    return MonthAbbreviations[targetMonth];
+  }).reverse(); // Reversing to get the correct order
+
   const data = {
-    labels: [LastThreeMonthsAbbreviations[0], LastThreeMonthsAbbreviations[1], LastThreeMonthsAbbreviations[2]],
+    labels: LastThreeMonthsAbbreviations,
     datasets: [
       {
         label: 'Balance',
-        data: categories.map((category) =>
-          ChartData.filter((t) => t.category === category)
-                   .reduce((sum, t) => sum + Number(t.amount), 0)
-        ),
+        data: last3MonthsSum[0]?.slice().reverse() || [], // Ensuring default empty array if sums aren't calculated yet
         backgroundColor: 'rgba(137, 196, 244, 1)',
         borderColor: 'rgba(0, 0, 255, 1)',
         borderWidth: 1,
       },
       {
         label: 'Income',
-        data: categories.map((category) =>
-               ChartData.filter((t) => t.category === category)
-                        .reduce((sum, t) => sum + Number(t.amount), 0)
-        ),
+        data: last3MonthsSum[1]?.slice().reverse() || [],
         backgroundColor: 'rgba(225, 190, 255, 1)',
         borderColor: 'rgba(96, 0, 128, 1)',
         borderWidth: 1,
       },
       {
         label: 'Expenses',
-        data: categories.map((category) =>
-               ChartData.filter((t) => t.category === category)
-                        .reduce((sum, t) => sum + Number(t.amount), 0)
-        ),
+        data: last3MonthsSum[2]?.slice().reverse() || [],
         backgroundColor: 'rgba(144, 238, 144, 1)',
         borderColor: 'rgba(0, 128, 0, 1)',
         borderWidth: 1,
       },
     ],
   };
-
 
   const options = {
     responsive: true,
@@ -91,7 +106,6 @@ const GroupedBarChart = () => {
 
   return (
     <div className="my-8">
-      <h2 className="text-center text-xl font-bold mb-4"></h2>
       <Bar data={data} options={options} />
     </div>
   );
