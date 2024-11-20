@@ -1,13 +1,24 @@
 import React, { useEffect, useState } from 'react';
-import { FaCircleMinus, FaArrowUp } from "react-icons/fa6";
+import { FaCircleMinus, FaArrowUp, FaArrowDown } from "react-icons/fa6";
 import axios from 'axios';
 
 const StockData = () => {
 
-  const companies = [
-    { symbol: "ADS", name: "Adidas AG" },
-    { symbol: "AAPL", name: "Apple Inc" },
-  ];
+    const companies = [
+        { symbol: "AAPL", name: "Apple Inc" },
+        { symbol: "AMZN", name: "Amazon.com Inc" },
+        { symbol: "GOOGL", name: "Alphabet Inc (Google)" },
+        // { symbol: "MSFT", name: "Microsoft Corporation" },
+        // { symbol: "META", name: "Meta Platforms Inc (Facebook)" },
+        // { symbol: "NVDA", name: "NVIDIA Corporation" },
+        // { symbol: "TSLA", name: "Tesla Inc" },
+        // { symbol: "IBM", name: "International Business Machines" },
+        // { symbol: "ORCL", name: "Oracle Corporation" },
+        // { symbol: "AMD", name: "Advanced Micro Devices" },
+        // { symbol: "UBER", name: "Uber Technologies Inc" },
+        // { symbol: "PYPL", name: "PayPal Holdings Inc" },
+      ];
+      
 
   const [stockData, setStockData] = useState(null);
   const [error, setError] = useState(null);
