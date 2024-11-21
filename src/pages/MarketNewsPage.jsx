@@ -2,15 +2,20 @@ import React from 'react'
 import Sidebar from '../components/Sidebar'
 import Header from '../components/Header'
 import News from '../components/News'
+import { useLocation } from 'react-router-dom'
 
 const MarketNews = () => {
+
+  const location = useLocation();
+  const {email} = location.state || {};
+
   return (
     <>
       <div className="flex h-screen">
-        <Sidebar />
+        <Sidebar email={email}/>
         <div className="flex-1 pl-4 ml-64">
           <div>
-            <Header />
+            <Header email={email}/>
           </div>
           <div className='bg-pink-200'>
             <News />

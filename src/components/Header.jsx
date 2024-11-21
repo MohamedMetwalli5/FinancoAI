@@ -3,8 +3,10 @@ import NoNotifications from "../components/notifications/NoNotifications";
 import Searchbar from "./header-components/Searchbar";
 import { useNavigate } from "react-router-dom";
 
-const Header = () => {
-  const name = "Mohamed";
+const Header = ({email}) => {
+
+  const name = email.substring(0, email.indexOf("@")) + "...";
+
   const ThereAreNotifications = false;
   const navigate = useNavigate();
 
@@ -20,7 +22,7 @@ const Header = () => {
           <div className="flex-2 text-black p-3 w-80">
             <Searchbar/> 
           </div>
-          {ThereAreNotifications == true? <Notifications /> : <NoNotifications />}
+          {/* {ThereAreNotifications == true? <Notifications /> : <NoNotifications />} */}
           <div onClick={() => navigate('/settings')} className="flex items-center justify-center p-4 cursor-pointer">
             <h3 className="font-bold text-black mr-2">{name} </h3>
             <img

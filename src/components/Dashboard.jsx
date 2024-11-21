@@ -1,9 +1,11 @@
 import Overview from "./dashboard-components/Overview";
 import Stocks from "./dashboard-components/Stocks";
-import Header from "./Header";
+import { useLocation } from 'react-router-dom';
 
 const Dashboard = () => {
-  const name = "Mohamed";
+  
+  const location = useLocation();
+  const { email } = location.state || {};
   const ThereAreNotifications = false;
   
   return (

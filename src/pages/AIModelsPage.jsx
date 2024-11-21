@@ -1,17 +1,22 @@
 import React from 'react';
 import Sidebar from '../components/Sidebar';
 import Header from '../components/Header';
+import { useLocation } from 'react-router-dom';
 
 const AIModelsPage = () => {
-  const name = "Mohamed";
+  
+  const location = useLocation();
+  const {email} = location.state || {};
+  
+  const name = email;
 
   return (
     <>
       <div className="flex h-screen">
-        <Sidebar />
+        <Sidebar email={email}/>
         <div className="flex-1 pl-4 ml-64">
           <div>
-            <Header />
+            <Header email={email}/>
           </div>
           <div id="Chatting" className="flex flex-col items-center justify-center h-full bg-gradient-to-br rounded-lg from-purple-100 to-white text-gray-800">
             <div className="text-center mb-8">

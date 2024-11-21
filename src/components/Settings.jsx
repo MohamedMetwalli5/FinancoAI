@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-const Settings = () => {
-
-  const email = "w@w.com";  // ToDo: making it dynamic
+const Settings = ({email}) => {
 
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
@@ -110,7 +108,7 @@ const Settings = () => {
         </label>
       </div>
 
-      <div className="flex items-center gap-3 mb-4">
+      {/* <div className="flex items-center gap-3 mb-4">
         <h3 className="text-xl font-medium">Dark Mode</h3>
         <label className="relative inline-block w-16 h-8 cursor-pointer">
           <input
@@ -122,7 +120,7 @@ const Settings = () => {
           <span className="absolute inset-0 bg-gray-300 transition-colors rounded-full peer-checked:bg-blue-500 peer-focus:ring-2 peer-focus:ring-blue-500 peer-focus:ring-offset-2"></span>
           <span className="absolute left-1 top-1 w-6 h-6 bg-white rounded-full transition-transform transform peer-checked:translate-x-8"></span>
         </label>
-      </div>
+      </div> */}
 
       <div className="flex items-center gap-3 mb-2">
         <button onClick={save} className="text-purple-500 bg-purple-100 p-2 px-5 rounded-md">Save</button>

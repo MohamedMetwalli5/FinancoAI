@@ -27,7 +27,7 @@ const SignInPage = () => {
         // // Storing the token to be used for authentication in future requests
         // localStorage.setItem('authToken', token);
 
-        navigate('/dashboard');
+        navigate('/dashboard', {state: {email: user.email}});
       } catch (error) {
         console.error('Error signing in user:', error);
       }
