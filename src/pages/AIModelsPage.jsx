@@ -66,7 +66,7 @@ const AIModelsPage = () => {
       }
       console.error('Error contacting ChatGPT:', error);
     } finally {
-      setLoading(false); // Set loading state back to false
+      setLoading(false); // Setting loading state back to false
     }
   };
 
