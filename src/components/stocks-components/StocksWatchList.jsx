@@ -3,49 +3,35 @@ import { FaCircleMinus, FaCirclePlus, FaArrowUp, FaArrowDown } from "react-icons
 import axios from 'axios';
 
 const StockData = () => {
-
-  const email = "amr.hussein@example.com"
+  
+  const email = "amr.hussein@example.com";
 
   const mockStockData = {
-    AAPL: {
-      symbol: "AAPL",
-      price: "148.85",
-      percent_change: "-0.16097",
-      name: "Apple Inc",
-    },
-    AMZN: {
-      symbol: "AMZN",
-      price: "3400.55",
-      percent_change: "0.23015",
-      name: "Amazon.com Inc",
-    },
-    GOOGL: {
-      symbol: "GOOGL",
-      price: "2725.60",
-      percent_change: "1.5623",
-      name: "Alphabet Inc (Google)",
-    },
+    AAPL: { symbol: "AAPL", price: "148.85", percent_change: "-0.16097", name: "Apple Inc" },
+    AMZN: { symbol: "AMZN", price: "3400.55", percent_change: "0.23015", name: "Amazon.com Inc" },
+    GOOGL: { symbol: "GOOGL", price: "2725.60", percent_change: "1.5623", name: "Alphabet Inc (Google)" },
   };
 
   const companies = [
-      { symbol: "AAPL", name: "Apple Inc" },
-      { symbol: "AMZN", name: "Amazon.com Inc" },
-      { symbol: "GOOGL", name: "Alphabet Inc (Google)" },
-      // { symbol: "MSFT", name: "Microsoft Corporation" },
-      // { symbol: "META", name: "Meta Platforms Inc (Facebook)" },
-      // { symbol: "IBM", name: "International Business Machines" },
-      // { symbol: "NVDA", name: "NVIDIA Corporation" },
-      // { symbol: "TSLA", name: "Tesla Inc" },
-      // { symbol: "ORCL", name: "Oracle Corporation" },
-      // { symbol: "AMD", name: "Advanced Micro Devices" },
-      // { symbol: "UBER", name: "Uber Technologies Inc" },
-      // { symbol: "PYPL", name: "PayPal Holdings Inc" },
-    ];
-     
+    { symbol: "AAPL", name: "Apple Inc" },
+    { symbol: "AMZN", name: "Amazon.com Inc" },
+    { symbol: "GOOGL", name: "Alphabet Inc (Google)" },
+    // { symbol: "MSFT", name: "Microsoft Corporation" },
+    // { symbol: "META", name: "Meta Platforms Inc (Facebook)" },
+    // { symbol: "IBM", name: "International Business Machines" },
+    // { symbol: "NVDA", name: "NVIDIA Corporation" },
+    // { symbol: "TSLA", name: "Tesla Inc" },
+    // { symbol: "ORCL", name: "Oracle Corporation" },
+    // { symbol: "AMD", name: "Advanced Micro Devices" },
+    // { symbol: "UBER", name: "Uber Technologies Inc" },
+    // { symbol: "PYPL", name: "PayPal Holdings Inc" },
+  ];
+
   const [subscribedStocks, setSubscribedStocks] = useState([]);
   const [stockData, setStockData] = useState(mockStockData);
   const [error, setError] = useState(null);
 
+  // Fetching the live stock data
   const fetchStockData = async () => {
     try {
       const response = await axios.get('https://api.twelvedata.com/quote', {
@@ -61,10 +47,21 @@ const StockData = () => {
     }
   };
 
+  // Fetching already user subscriptions
+  const fetchSubscribedStocks = async () => {
+    try {
+      const { data } = await axios.get(`http://localhost:5000/subscribed-stocks/${email}`);
+      setSubscribedStocks(data.subscribedstocks || []);
+    } catch (error) {
+      console.error('Error fetching subscriptions:', error);
+    }
+  };
+
+  
   useEffect(() => {
     fetchStockData();
+    fetchSubscribedStocks();
   }, []);
-  
 
   const addSubscription = async (newSymbol) => {
     try {
@@ -72,50 +69,47 @@ const StockData = () => {
         console.error("Email is undefined. Cannot update subscriptions.");
         return;
       }
-  
+
       // Fetching the current subscriptions from the backend
       const { data } = await axios.get(`http://localhost:5000/subscribed-stocks/${email}`);
       const currentSubscriptions = data.subscribedstocks || [];
-  
+
       // Merging current subscriptions with the new symbol
       const updatedSubscriptions = [...new Set([...currentSubscriptions, newSymbol])];
-  
+
       // Sending the updated list back to the server
       const response = await axios.patch(
         `http://localhost:5000/subscribed-stocks/${email}`,
         { subscribedstocks: updatedSubscriptions }
       );
-      setSubscribedStocks(updatedSubscriptions);////////////////////
+      setSubscribedStocks(updatedSubscriptions);
       console.log("User subscriptions saved:", response.data);
     } catch (error) {
       console.error("Error updating user info:", error.response ? error.response.data : error.message);
       alert("Failed to update user subscriptions.");
     }
   };
-  
+
   const removeSubscription = async (symbolToRemove) => {
     try {
       const { data } = await axios.get(`http://localhost:5000/subscribed-stocks/${email}`);
       const currentSubscriptions = data.subscribedstocks || [];
       const updatedSubscriptions = currentSubscriptions.filter((item) => item !== symbolToRemove);
-  
+
       await axios.patch(`http://localhost:5000/subscribed-stocks/${email}`, {
         subscribedstocks: updatedSubscriptions,
       });
-      setSubscribedStocks(updatedSubscriptions);//////////////
+      setSubscribedStocks(updatedSubscriptions);
       console.log(`Unsubscribed from ${symbolToRemove}`);
     } catch (error) {
       console.error("Error removing subscription:", error);
     }
   };
-  
-  
 
   return (
     <div className='flex-1 bg-white rounded-lg p-2'>
-      {/* In case of any errors */}
       {error && <p className='text-red-500'>{error}</p>}
-      
+
       <div className='flex-col'>
         <div className='flex justify-center items-center mb-5'>
           <h1 className='text-lg font-bold'>Watchlist</h1>
@@ -130,16 +124,14 @@ const StockData = () => {
               <div key={symbol} className='flex m-auto justify-between items-center border-y p-1'>
                 {userSubscribed ? (
                   <FaCircleMinus onClick={() => {
-                      setSubscribedStocks(subscribedStocks.filter(item => item !== stock.symbol));
-                      removeSubscription(stock.symbol);
-                      console.log(`Unsubscribed from ${stock.symbol}`);
-                    }} className='cursor-pointer text-red-500' />
+                    setSubscribedStocks(subscribedStocks.filter(item => item !== stock.symbol));
+                    removeSubscription(stock.symbol);
+                  }} className='cursor-pointer text-red-500' />
                 ) : (
                   <FaCirclePlus onClick={() => {
-                      setSubscribedStocks(prevState => [...prevState, stock.symbol]);
-                      addSubscription(stock.symbol);
-                      console.log(`Subscribed to ${stock.symbol}`);
-                    }} className='cursor-pointer text-blue-500' />
+                    setSubscribedStocks(prevState => [...prevState, stock.symbol]);
+                    addSubscription(stock.symbol);
+                  }} className='cursor-pointer text-blue-500' />
                 )}
                 <div className='text-center'>
                   <h2 className='text-md font-bold'>{stock.symbol}</h2>
