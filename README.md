@@ -1,10 +1,12 @@
-# React + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
 # FinancoAI
+
+FinancoAI is an intelligent assistant designed to offer financial insights, budgeting tips, investment opportunities, and personalized financial forecasting. Using OpenAI’s models, FinancoAI helps users make smarter financial decisions with AI-powered recommendations and guidance.
+
+---
+
+## Features
+
+- **Personalized Financial Insights**: Get predictions about your financial future based on your personal data.
+- **Investment Recommendations**: Discover the best investment opportunities tailored to your financial situation.
+- **Budgeting Assistance**: Receive AI-powered insights to help you manage and optimize your finances.
+- **Interactive Chat Interface**: Engage with FinancoAI through an easy-to-use messaging interface.
