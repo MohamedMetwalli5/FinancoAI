@@ -1,8 +1,27 @@
 import React from 'react';
+import { useState, useEffect } from 'react';
 import { FaRegSquareCaretDown, FaRegSquareCaretUp } from "react-icons/fa6";
+import axios from 'axios';
 
 const StockTips = () => {
-  const TopTips = [{name: "Metwalli", text: "First one"}, {name: "Hassan", text: "Second one"}];
+
+  const [TopTips, setTopTips] = useState([])
+
+  const fetchTopTips = async () => {
+    try {
+      const response = await axios.get("http://localhost:5000/users-tips");
+      // console.log("Fetched data:", response.data);
+      setTopTips(response.data); 
+    } catch (error) {
+      console.error("Error fetching tips:", error);
+    }
+
+  }
+
+  useEffect(() => {
+    fetchTopTips();
+  }, [])
+  
 
   return (
     <div className="flex flex-col bg-slate-100 w-full p-4 rounded-lg h-full">
