@@ -8,15 +8,15 @@ const StockData = () => {
         { symbol: "AAPL", name: "Apple Inc" },
         { symbol: "AMZN", name: "Amazon.com Inc" },
         { symbol: "GOOGL", name: "Alphabet Inc (Google)" },
-        // { symbol: "MSFT", name: "Microsoft Corporation" },
-        // { symbol: "META", name: "Meta Platforms Inc (Facebook)" },
-        // { symbol: "NVDA", name: "NVIDIA Corporation" },
-        // { symbol: "TSLA", name: "Tesla Inc" },
-        // { symbol: "IBM", name: "International Business Machines" },
-        // { symbol: "ORCL", name: "Oracle Corporation" },
-        // { symbol: "AMD", name: "Advanced Micro Devices" },
-        // { symbol: "UBER", name: "Uber Technologies Inc" },
-        // { symbol: "PYPL", name: "PayPal Holdings Inc" },
+        { symbol: "MSFT", name: "Microsoft Corporation" },
+        { symbol: "META", name: "Meta Platforms Inc (Facebook)" },
+        { symbol: "IBM", name: "International Business Machines" },
+        { symbol: "NVDA", name: "NVIDIA Corporation" },
+        { symbol: "TSLA", name: "Tesla Inc" },
+        { symbol: "ORCL", name: "Oracle Corporation" },
+        { symbol: "AMD", name: "Advanced Micro Devices" },
+        { symbol: "UBER", name: "Uber Technologies Inc" },
+        { symbol: "PYPL", name: "PayPal Holdings Inc" },
       ];
       
 
@@ -28,7 +28,7 @@ const StockData = () => {
       const response = await axios.get('https://api.twelvedata.com/quote', {
         params: {
           symbol: companies.map(company => company.symbol).toString(),  // The required stock symbols
-          apikey: process.env.REACT_APP_TWELVE_DATA_API_KEY, // The API Key
+          apikey: import.meta.env.VITE_TWELVE_DATA_API_KEY,
         },
       });
       setStockData(response.data);
