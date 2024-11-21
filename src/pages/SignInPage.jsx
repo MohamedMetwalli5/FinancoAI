@@ -21,10 +21,10 @@ const SignInPage = () => {
         console.log('signedin successfully!');
 
         // ToDo
-        // // Assuming the response contains a token after successful login
+        // Assuming the response contains a token after successful login
         // const { token } = response.data;
         
-        // // Storing the token to be used for authentication in future requests
+        // Storing the token to be used for authentication in future requests
         // localStorage.setItem('authToken', token);
 
         navigate('/dashboard', {state: {email: user.email}});
