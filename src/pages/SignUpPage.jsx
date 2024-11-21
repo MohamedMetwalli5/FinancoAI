@@ -12,15 +12,17 @@ const SignUpPage = () => {
     event.preventDefault(); // Preventing the default form submission behavior
 
     const newUser = {
-      id: uuidv4(),  // Unique user ID
+      id: document.getElementById("email").value,  // The unique user ID
       name: document.getElementById("name").value,
       email: document.getElementById("email").value,
-      password: document.getElementById("password").value
+      password: document.getElementById("password").value,
+      timezone: "UTC",
+      emailnotifications : false
     };
   
     if(newUser.name.length > 0 && newUser.email.length > 0 && newUser.password.length > 0){
       try {
-        const response = await axios.post('http://localhost:5000/signup', newUser);
+        const response = await axios.post('http://localhost:5000/users', newUser);
         console.log('User added:', response.data);
         navigate('/dashboard');
       } catch (error) {

@@ -25,9 +25,9 @@ const StockTips = () => {
 
   return (
     <div className="flex flex-col bg-slate-100 w-full p-4 rounded-lg h-full">
-      <div className="flex-grow">
+      <div className="flex-grow h-64 overflow-y-auto">
         {TopTips.map((tips, index)=>(        
-          <div className="mb-4">
+          <div key={index} className="mb-4">
             <div className="flex gap-2 items-center p-1">
               <img
                 src="/src/assets/images/PersonalPhoto.png"
