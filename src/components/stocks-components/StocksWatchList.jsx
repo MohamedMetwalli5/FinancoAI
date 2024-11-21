@@ -3,6 +3,9 @@ import { FaCircleMinus, FaCirclePlus, FaArrowUp, FaArrowDown } from "react-icons
 import axios from 'axios';
 
 const StockData = () => {
+
+  const email = "amr.hussein@example.com"
+
   const mockStockData = {
     AAPL: {
       symbol: "AAPL",
@@ -61,6 +64,52 @@ const StockData = () => {
   useEffect(() => {
     fetchStockData();
   }, []);
+  
+
+  const addSubscription = async (newSymbol) => {
+    try {
+      if (!email) {
+        console.error("Email is undefined. Cannot update subscriptions.");
+        return;
+      }
+  
+      // Fetching the current subscriptions from the backend
+      const { data } = await axios.get(`http://localhost:5000/subscribed-stocks/${email}`);
+      const currentSubscriptions = data.subscribedstocks || [];
+  
+      // Merging current subscriptions with the new symbol
+      const updatedSubscriptions = [...new Set([...currentSubscriptions, newSymbol])];
+  
+      // Sending the updated list back to the server
+      const response = await axios.patch(
+        `http://localhost:5000/subscribed-stocks/${email}`,
+        { subscribedstocks: updatedSubscriptions }
+      );
+      setSubscribedStocks(updatedSubscriptions);////////////////////
+      console.log("User subscriptions saved:", response.data);
+    } catch (error) {
+      console.error("Error updating user info:", error.response ? error.response.data : error.message);
+      alert("Failed to update user subscriptions.");
+    }
+  };
+  
+  const removeSubscription = async (symbolToRemove) => {
+    try {
+      const { data } = await axios.get(`http://localhost:5000/subscribed-stocks/${email}`);
+      const currentSubscriptions = data.subscribedstocks || [];
+      const updatedSubscriptions = currentSubscriptions.filter((item) => item !== symbolToRemove);
+  
+      await axios.patch(`http://localhost:5000/subscribed-stocks/${email}`, {
+        subscribedstocks: updatedSubscriptions,
+      });
+      setSubscribedStocks(updatedSubscriptions);//////////////
+      console.log(`Unsubscribed from ${symbolToRemove}`);
+    } catch (error) {
+      console.error("Error removing subscription:", error);
+    }
+  };
+  
+  
 
   return (
     <div className='flex-1 bg-white rounded-lg p-2'>
@@ -82,11 +131,13 @@ const StockData = () => {
                 {userSubscribed ? (
                   <FaCircleMinus onClick={() => {
                       setSubscribedStocks(subscribedStocks.filter(item => item !== stock.symbol));
+                      removeSubscription(stock.symbol);
                       console.log(`Unsubscribed from ${stock.symbol}`);
                     }} className='cursor-pointer text-red-500' />
                 ) : (
                   <FaCirclePlus onClick={() => {
                       setSubscribedStocks(prevState => [...prevState, stock.symbol]);
+                      addSubscription(stock.symbol);
                       console.log(`Subscribed to ${stock.symbol}`);
                     }} className='cursor-pointer text-blue-500' />
                 )}
