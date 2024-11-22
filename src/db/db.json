@@ -1,0 +1,406 @@
+{
+  "users": [
+    {
+      "id": "nadia.hosny@example.com",
+      "name": "Nadia Hosny",
+      "email": "nadia.hosny@example.com",
+      "password": "123",
+      "timezone": "UTC",
+      "emailNotifications": false
+    },
+    {
+      "id": "hjgfjhf@example.com",
+      "name": "iiiiiurureiuriedsadsasdasdasdsadsad",
+      "email": "hjgfjhf@example.com",
+      "password": "tetierot",
+      "timezone": "gmt",
+      "emailNotifications": false
+    },
+    {
+      "id": "mohamedmetwalli5@gmail.com",
+      "name": "Mohamed Metwalli",
+      "email": "mohamedmetwalli5@gmail.com",
+      "password": "111",
+      "timezone": "UTC",
+      "emailnotifications": false
+    },
+    {
+      "id": "bvbdbgbgfb@gmail.com",
+      "name": "fdsfdsf",
+      "email": "bvbdbgbgfb@gmail.com",
+      "password": "333",
+      "timezone": "UTC",
+      "emailnotifications": false
+    }
+  ],
+  "transactions": [
+    {
+      "id": "58fa",
+      "category": "Balance",
+      "amount": "10",
+      "description": "popopop",
+      "date": "2024-9-18",
+      "recurring": false
+    },
+    {
+      "id": "9a99",
+      "category": "Balance",
+      "amount": "20",
+      "description": "fdsf",
+      "date": "2024-10-12",
+      "recurring": false
+    },
+    {
+      "id": "9a99",
+      "category": "Balance",
+      "amount": "30",
+      "description": "fdsf",
+      "date": "2024-11-12",
+      "recurring": false
+    },
+    {
+      "id": "bd95",
+      "category": "Income",
+      "amount": "40",
+      "description": "fdsfd",
+      "date": "2024-9-11",
+      "recurring": false
+    },
+    {
+      "id": "twet",
+      "category": "Income",
+      "amount": "50",
+      "description": "popopop",
+      "date": "2024-10-18",
+      "recurring": false
+    },
+    {
+      "id": "twet",
+      "category": "Income",
+      "amount": "60",
+      "description": "popopop",
+      "date": "2024-11-18",
+      "recurring": false
+    },
+    {
+      "id": "eqw",
+      "category": "Expenses",
+      "amount": "70",
+      "description": "fdsf",
+      "date": "2024-9-12",
+      "recurring": false
+    },
+    {
+      "id": "tret",
+      "category": "Expenses",
+      "amount": "80",
+      "description": "fdsfd",
+      "date": "2024-10-11",
+      "recurring": false
+    },
+    {
+      "id": "tret",
+      "category": "Expenses",
+      "amount": "90",
+      "description": "fdsfd",
+      "date": "2024-11-11",
+      "recurring": false
+    },
+    {
+      "id": "36c4",
+      "category": "Balance",
+      "amount": "30",
+      "description": "ooooooooo",
+      "date": "2024-09-19",
+      "recurring": false
+    },
+    {
+      "id": "44e8",
+      "category": "Income",
+      "amount": "50",
+      "description": "Salary",
+      "date": "2024-11-12",
+      "recurring": false
+    },
+    {
+      "id": "454f",
+      "category": "Balance",
+      "amount": "40",
+      "description": "certificate",
+      "date": "2024-09-11",
+      "recurring": false
+    }
+  ],
+  "signin": [
+    {
+      "email": "mohamedmetwalli5@gmail.com",
+      "password": "123456",
+      "id": "1955"
+    },
+    {
+      "email": "jane.smith@example.com",
+      "password": "123456",
+      "id": "59ed"
+    },
+    {
+      "id": "1512",
+      "email": "w@w.com",
+      "password": "333"
+    },
+    {
+      "id": "ecef",
+      "email": "m@w.com",
+      "password": "333"
+    },
+    {
+      "id": "8a42",
+      "email": "w@w.com",
+      "password": "111"
+    },
+    {
+      "id": "9dc7",
+      "email": "wdsfdsfsdfsf@w.com",
+      "password": "333"
+    },
+    {
+      "id": "b844",
+      "email": "tuireuturditul@kjgkdfjgk.com",
+      "password": "333"
+    },
+    {
+      "id": "d6d3",
+      "email": "w@weeeeeeeeeee.com",
+      "password": "333"
+    },
+    {
+      "id": "86fe",
+      "email": "mohamedmetwalli5@gmail.com",
+      "password": "123"
+    },
+    {
+      "id": "cb8e",
+      "email": "mohamedmetwalli5@gmail.com",
+      "password": "123"
+    },
+    {
+      "id": "1f33",
+      "email": "mohamedmetwalli5@gmail.com",
+      "password": "123"
+    },
+    {
+      "id": "900a",
+      "email": "mohamedmetwalli5@gmail.com",
+      "password": "123"
+    },
+    {
+      "id": "bdd5",
+      "email": "mohamedmetwalli5@gmail.com",
+      "password": "123"
+    },
+    {
+      "id": "3092",
+      "email": "mohamedmetwalli5@gmail.com",
+      "password": "123"
+    },
+    {
+      "id": "0fcd",
+      "email": "mohamedmetwalli5@gmail.com",
+      "password": "123"
+    },
+    {
+      "id": "1a31",
+      "email": "mohamedmetwalli5@gmail.com",
+      "password": "123"
+    },
+    {
+      "id": "08e7",
+      "email": "mohamedmetwalli5@gmail.com",
+      "password": "123"
+    },
+    {
+      "id": "03b9",
+      "email": "mohamedmetwalli5@gmail.com",
+      "password": "123"
+    },
+    {
+      "id": "e23a",
+      "email": "mohamedmetwalli5@gmail.com",
+      "password": "123"
+    },
+    {
+      "id": "202a",
+      "email": "mohamedmetwalli5@gmail.com",
+      "password": "123"
+    },
+    {
+      "id": "767c",
+      "email": "mohamedmetwalli5@gmail.com",
+      "password": "123"
+    },
+    {
+      "id": "b378",
+      "email": "mohamedmetwalli5@gmail.com",
+      "password": "123"
+    },
+    {
+      "id": "a3a2",
+      "email": "mohamedmetwalli5@gmail.com",
+      "password": "123"
+    },
+    {
+      "id": "bf5a",
+      "email": "mohamedmetwalli5@gmail.com",
+      "password": "123"
+    },
+    {
+      "id": "cee4",
+      "email": "mohamedmetwalli5@gmail.com",
+      "password": "123"
+    },
+    {
+      "id": "5b85",
+      "email": "mohamedmetwalli5@gmail.com",
+      "password": "123"
+    },
+    {
+      "id": "1e16",
+      "email": "mohamedmetwalli5@gmail.com",
+      "password": "123"
+    },
+    {
+      "id": "3a97",
+      "email": "mohamedmetwalli5@gmail.com",
+      "password": "123"
+    },
+    {
+      "id": "0553",
+      "email": "mohamedmetwalli5@gmail.com",
+      "password": "123"
+    },
+    {
+      "id": "890d",
+      "email": "mohamedmetwalli5@gmail.com",
+      "password": "123"
+    },
+    {
+      "id": "9c34",
+      "email": "mohamedmetwalli5@gmail.com",
+      "password": "123"
+    },
+    {
+      "id": "6fb2",
+      "email": "mohamedmetwalli5@gmail.com",
+      "password": "123"
+    },
+    {
+      "id": "46e6",
+      "email": "ewitoitwr@example.com",
+      "password": "111"
+    },
+    {
+      "id": "5380",
+      "email": "mohamedmetwalli5@gmail.com",
+      "password": "123"
+    },
+    {
+      "id": "aa9f",
+      "email": "mohamedmetwalli5@gmail.com",
+      "password": "123"
+    },
+    {
+      "id": "7e87",
+      "email": "hjgfjhf@example.com",
+      "password": "123"
+    },
+    {
+      "id": "d1dc",
+      "email": "mohamedmetwalli5@gmail.com",
+      "password": "123"
+    },
+    {
+      "id": "3926",
+      "email": "mohamedmetwalli5@gmail.com",
+      "password": "123"
+    },
+    {
+      "id": "2f44",
+      "email": "mohamedmetwalli5@gmail.com",
+      "password": "123"
+    },
+    {
+      "id": "b867",
+      "email": "bvbdbgbgfb@gmail.com",
+      "password": "333"
+    },
+    {
+      "id": "9920",
+      "email": "mohamedmetwalli5@gmail.com",
+      "password": "333"
+    }
+  ],
+  "users-tips": [
+    {
+      "email": "mohamedmetwalli@example.com",
+      "name": "Metwalli",
+      "text": "First one!",
+      "id": "7732"
+    },
+    {
+      "email": "hassan@example.com",
+      "name": "Hassan",
+      "text": "Don't forget to diversify your investments.",
+      "id": "6d37"
+    },
+    {
+      "email": "Mohamed.Hosny@example.com",
+      "name": "Mohamed Hosny",
+      "text": "Tech stocks are promising in Q4.",
+      "id": "46eb"
+    },
+    {
+      "email": "omar.saeed@example.com",
+      "name": "Omar Saeed",
+      "text": "Timing the market is less important than time in the market.",
+      "id": "96ac"
+    },
+    {
+      "email": "m.nabil@example.com",
+      "name": "Mostafa Nabil",
+      "text": "Consider dollar-cost averaging for consistent investments.",
+      "id": "fa19"
+    },
+    {
+      "email": "ahmed.mostafa@example.com",
+      "name": "Ahmed Mostafa",
+      "text": "Keep an eye on emerging markets.",
+      "id": "a0a1"
+    },
+    {
+      "email": "reda.mostafa@example.com",
+      "name": "Reda Mostafa",
+      "text": "Avoid emotional decision-making when trading.",
+      "id": "abc0"
+    },
+    {
+      "email": "ali.kamal@example.com",
+      "name": "Ali Kamal",
+      "text": "Learn technical analysis to improve your trades.",
+      "id": "02a1"
+    },
+    {
+      "email": "amr.hussein@example.com",
+      "name": "Amr Hussein",
+      "text": "Review your portfolio regularly for better returns.",
+      "id": "9d29"
+    }
+  ],
+  "subscribed-stocks": [
+    {
+      "id": "amr.hussein@example.com",
+      "subscribedstocks": [
+        "AAPL",
+        "GOOGL"
+      ]
+    }
+  ]
+}
