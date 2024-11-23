@@ -3,7 +3,7 @@ import CardPopupForm from "./CardPopupForm";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-const OverviewCards =  () => {
+const OverviewCards =  ({email}) => {
   const [isOpen, setIsOpen] = useState(false);
   const [PopupFormTitle, setPopupFormTitle] = useState("Balance");
 

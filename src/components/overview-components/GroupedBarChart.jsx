@@ -5,7 +5,7 @@ import axios from 'axios';
 
 ChartJS.register(CategoryScale, BarElement, Title, Tooltip, Legend);
 
-const GroupedBarChart = () => {
+const GroupedBarChart = ({email}) => {
   const MonthAbbreviations = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
   
   const [ChartData, setChartData] = useState([]);

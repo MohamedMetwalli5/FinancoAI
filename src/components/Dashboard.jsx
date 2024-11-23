@@ -2,16 +2,16 @@ import Overview from "./dashboard-components/Overview";
 import Stocks from "./dashboard-components/Stocks";
 import { useLocation } from 'react-router-dom';
 
-const Dashboard = () => {
+const Dashboard = ({email}) => {
   
-  const location = useLocation();
-  const { email } = location.state || {};
+  // const location = useLocation();
+  // const { email } = location.state || {};
   const ThereAreNotifications = false;
   
   return (
     <>
-      <Overview />
-      <Stocks />
+      <Overview email={email}/>
+      <Stocks email={email}/>
     </>
   );
 };

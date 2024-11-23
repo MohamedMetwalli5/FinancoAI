@@ -2,11 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { FaCircleMinus, FaCirclePlus, FaArrowUp, FaArrowDown } from "react-icons/fa6";
 import axios from 'axios';
 
-const StockData = () => {
+const StockData = ({email}) => {
   
-  const email = "mohamedmetwalli5@gmail.com";
+  // const email = "mohamedmetwalli5@gmail.com";
   
-
   const mockStockData = {
     AAPL: { symbol: "AAPL", price: "", percent_change: "-0.16097", name: "Apple Inc" },
     AMZN: { symbol: "AMZN", price: "", percent_change: "0.23015", name: "Amazon.com Inc" },
@@ -38,10 +37,10 @@ const StockData = () => {
       const response = await axios.get('https://api.twelvedata.com/quote', {
         params: {
           symbol: companies.map(company => company.symbol).toString(),
-          apikey: import.meta.env.VITE_TWELVE_DATA_API_KEYd,
+          apikey: import.meta.env.VITE_TWELVE_DATA_API_KEY,
         },
       });
-      // setStockData(response.data);
+      setStockData(response.data);
     } catch (error) {
       console.error('Error fetching stock data:', error);
       setError('Failed to fetch stock data');
@@ -60,7 +59,7 @@ const StockData = () => {
 
   
   useEffect(() => {
-    fetchStockData();
+    // fetchStockData();
     fetchSubscribedStocks();
   }, []);
 

@@ -22,9 +22,9 @@ ChartJS.register(
   Legend
 );
 
-const StocksChart = () => {
+const StocksChart = ({email}) => {
   
-  const email = "mohamedmetwalli5@gmail.com"
+  // const email = "mohamedmetwalli5@gmail.com"
 
   const [currentSubscriptions, setCurrentSubscriptions] = useState([]);
 
