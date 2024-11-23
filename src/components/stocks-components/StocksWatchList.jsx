@@ -4,12 +4,13 @@ import axios from 'axios';
 
 const StockData = () => {
   
-  const email = "amr.hussein@example.com";
+  const email = "mohamedmetwalli5@gmail.com";
+  
 
   const mockStockData = {
-    AAPL: { symbol: "AAPL", price: "148.85", percent_change: "-0.16097", name: "Apple Inc" },
-    AMZN: { symbol: "AMZN", price: "3400.55", percent_change: "0.23015", name: "Amazon.com Inc" },
-    GOOGL: { symbol: "GOOGL", price: "2725.60", percent_change: "1.5623", name: "Alphabet Inc (Google)" },
+    AAPL: { symbol: "AAPL", price: "", percent_change: "-0.16097", name: "Apple Inc" },
+    AMZN: { symbol: "AMZN", price: "", percent_change: "0.23015", name: "Amazon.com Inc" },
+    GOOGL: { symbol: "GOOGL", price: "", percent_change: "1.5623", name: "Alphabet Inc (Google)" },
   };
 
   const companies = [

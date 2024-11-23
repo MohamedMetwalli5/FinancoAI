@@ -24,7 +24,7 @@ ChartJS.register(
 
 const StocksChart = () => {
   
-  const email = "amr.hussein@example.com"
+  const email = "mohamedmetwalli5@gmail.com"
 
   const [currentSubscriptions, setCurrentSubscriptions] = useState([]);
 

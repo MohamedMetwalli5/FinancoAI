@@ -336,6 +336,11 @@
       "id": "9920",
       "email": "mohamedmetwalli5@gmail.com",
       "password": "333"
+    },
+    {
+      "id": "3bb2",
+      "email": "mohamedmetwalli5@gmail.com",
+      "password": "333"
     }
   ],
   "users-tips": [
@@ -396,7 +401,7 @@
   ],
   "subscribed-stocks": [
     {
-      "id": "amr.hussein@example.com",
+      "id": "mohamedmetwalli5@gmail.com",
       "subscribedstocks": [
         "AAPL",
         "GOOGL"
