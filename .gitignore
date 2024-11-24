@@ -15,3 +15,8 @@ backend/node_modules/
 
 # Environment files
 .env
+
+node_modules
+dist
+dist-ssr
+*.local
