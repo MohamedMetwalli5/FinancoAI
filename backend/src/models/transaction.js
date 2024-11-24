@@ -7,7 +7,7 @@ const transactionSchema = new mongoose.Schema({
     required: true,
     unique: true
   },
-  userId: {
+  email: {
     type: String,
     required: true,
   },
