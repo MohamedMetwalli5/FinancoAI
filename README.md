@@ -12,7 +12,7 @@ FinancoAI is an intelligent assistant designed to offer financial insights, budg
 - **Interactive Chat Interface**: Engage with FinancoAI through an easy-to-use messaging interface.
 
 ## How to Run
-1. ``` cd frontend```
+1. ``` cd frontend ```
 2. ``` npm install ```
 3. ``` json-server --watch src/db/db.json --port 5000 ```
 4. ``` npm run dev ```
