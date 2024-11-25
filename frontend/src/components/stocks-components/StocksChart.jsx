@@ -40,6 +40,7 @@ const StocksChart = ({email}) => {
     fetchStockData();
   }, [])
   
+  // I used mock data here for demonstration purposes; the same approach can be applied to live data in the stocks watchlist
   const mockStockData = [
     {
       symbol: "AAPL",
