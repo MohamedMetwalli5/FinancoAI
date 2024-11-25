@@ -17,7 +17,7 @@ const MarketNews = () => {
           <div>
             <Header email={email}/>
           </div>
-          <div className='bg-pink-200'>
+          <div className='bg-slate-100 rounded-lg'>
             <News />
           </div>         
         </div>   

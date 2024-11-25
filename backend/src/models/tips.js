@@ -8,10 +8,6 @@ const tipsSchema = new mongoose.Schema({
     unique: false,
     default: () => uuidv4()
   },
-  name: {
-    type: String,
-    required: true  
-  },
   email: {
     type: String,
     required: true,

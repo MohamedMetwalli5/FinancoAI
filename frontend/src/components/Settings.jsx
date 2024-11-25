@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 const Settings = ({email}) => {
@@ -9,20 +10,29 @@ const Settings = ({email}) => {
   const [emailNotifications, setEmailNotifications] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
 
+  const navigate = useNavigate();
+
+  const token = localStorage.getItem('authToken');
+
+
   const save = async (event) => {
     event.preventDefault();
 
     const updatedUser = {
       name,
-      password,
+      passwordHash: document.getElementById("password").value,
       timezone,
       emailNotifications,
     };
 
-    
-    if (updatedUser.name && updatedUser.password) {
+  
+    if (updatedUser.name && updatedUser.passwordHash) {
       try {
-        const response = await axios.patch(`http://localhost:5000/users/${email}`, updatedUser);
+        const response = await axios.put(`http://localhost:5000/users/${email}`, updatedUser, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
         console.log('User info saved:', response.data);
       } catch (error) {
         console.error('Error updating user info:', error);
@@ -34,11 +44,18 @@ const Settings = ({email}) => {
     }
   };
 
+
+
   const deleteAccount = async () => {
     try {
-      const response = await axios.delete(`http://localhost:5000/users/${email}`);
-      console.log('User account deleted:', response.data);
+      const response = await axios.delete(`http://localhost:5000/users/${email}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
       alert("Your account has been deleted!");
+      localStorage.removeItem("authToken");
+      navigate("/");
     } catch (error) {
       console.error('Error deleting user info:', error);
       alert("Error deleting account!");

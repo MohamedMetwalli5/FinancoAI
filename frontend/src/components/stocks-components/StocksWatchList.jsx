@@ -3,9 +3,7 @@ import { FaCircleMinus, FaCirclePlus, FaArrowUp, FaArrowDown } from "react-icons
 import axios from 'axios';
 
 const StockData = ({email}) => {
-  
-  // const email = "mohamedmetwalli5@gmail.com";
-  
+    
   const mockStockData = {
     AAPL: { symbol: "AAPL", price: "", percent_change: "-0.16097", name: "Apple Inc" },
     AMZN: { symbol: "AMZN", price: "", percent_change: "0.23015", name: "Amazon.com Inc" },
@@ -31,6 +29,8 @@ const StockData = ({email}) => {
   const [stockData, setStockData] = useState(mockStockData);
   const [error, setError] = useState(null);
 
+  const token = localStorage.getItem('authToken');
+
   // Fetching the live stock data
   const fetchStockData = async () => {
     try {
@@ -50,12 +50,18 @@ const StockData = ({email}) => {
   // Fetching already user subscriptions
   const fetchSubscribedStocks = async () => {
     try {
-      const { data } = await axios.get(`http://localhost:5000/subscribed-stocks/${email}`);
-      setSubscribedStocks(data.subscribedstocks || []);
+      const response = await axios.get(`http://localhost:5000/subscribed-stocks/${email}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      // console.log("fdsfsdfsdfdsf", response.data);
+      setSubscribedStocks(response.data.subscribedstocks || []);
     } catch (error) {
       console.error('Error fetching subscriptions:', error);
     }
   };
+  
 
   
   useEffect(() => {
@@ -63,25 +69,31 @@ const StockData = ({email}) => {
     fetchSubscribedStocks();
   }, []);
 
+
   const addSubscription = async (newSymbol) => {
     try {
       if (!email) {
         console.error("Email is undefined. Cannot update subscriptions.");
         return;
       }
-
       // Fetching the current subscriptions from the backend
-      const { data } = await axios.get(`http://localhost:5000/subscribed-stocks/${email}`);
+      const { data } = await axios.get(`http://localhost:5000/subscribed-stocks/${email}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
       const currentSubscriptions = data.subscribedstocks || [];
 
-      // Merging current subscriptions with the new symbol
-      const updatedSubscriptions = [...new Set([...currentSubscriptions, newSymbol])];
+      const updatedSubscriptions = [...new Set([...currentSubscriptions, newSymbol])]; // Merging current subscriptions with the new symbol
 
       // Sending the updated list back to the server
-      const response = await axios.patch(
+      const response = await axios.put(
         `http://localhost:5000/subscribed-stocks/${email}`,
-        { subscribedstocks: updatedSubscriptions }
-      );
+        { subscribedstocks: updatedSubscriptions }, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
       setSubscribedStocks(updatedSubscriptions);
       console.log("User subscriptions saved:", response.data);
     } catch (error) {
@@ -90,14 +102,22 @@ const StockData = ({email}) => {
     }
   };
 
+
   const removeSubscription = async (symbolToRemove) => {
     try {
-      const { data } = await axios.get(`http://localhost:5000/subscribed-stocks/${email}`);
+      const { data } = await axios.get(`http://localhost:5000/subscribed-stocks/${email}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
       const currentSubscriptions = data.subscribedstocks || [];
       const updatedSubscriptions = currentSubscriptions.filter((item) => item !== symbolToRemove);
 
-      await axios.patch(`http://localhost:5000/subscribed-stocks/${email}`, {
-        subscribedstocks: updatedSubscriptions,
+      await axios.put(`http://localhost:5000/subscribed-stocks/${email}`, 
+        { subscribedstocks: updatedSubscriptions }, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
       });
       setSubscribedStocks(updatedSubscriptions);
       console.log(`Unsubscribed from ${symbolToRemove}`);
@@ -105,6 +125,7 @@ const StockData = ({email}) => {
       console.error("Error removing subscription:", error);
     }
   };
+  
 
   return (
     <div className='flex-1 bg-white rounded-lg p-2'>

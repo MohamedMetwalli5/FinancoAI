@@ -23,8 +23,6 @@ ChartJS.register(
 );
 
 const StocksChart = ({email}) => {
-  
-  // const email = "mohamedmetwalli5@gmail.com"
 
   const [currentSubscriptions, setCurrentSubscriptions] = useState([]);
 
@@ -49,8 +47,8 @@ const StocksChart = ({email}) => {
         { datetime: "2024-11-20 10:00:00", open: 150.75, high: 152.30, low: 150.10, close: 121.80, volume: 450000 },
         { datetime: "2024-11-20 10:01:00", open: 151.80, high: 152.00, low: 150.90, close: 141.30, volume: 420000 },
         { datetime: "2024-11-20 10:02:00", open: 151.30, high: 151.90, low: 150.50, close: 251.60, volume: 380000 },
-        { datetime: "2024-11-20 10:03:00", open: 151.60, high: 152.50, low: 151.10, close: 152.20, volume: 500000 },
-        { datetime: "2024-11-20 10:04:00", open: 152.20, high: 152.80, low: 151.70, close: 100.40, volume: 510000 }
+        { datetime: "2024-11-20 10:03:00", open: 151.60, high: 152.50, low: 151.10, close: 102.20, volume: 500000 },
+        { datetime: "2024-11-20 10:04:00", open: 152.20, high: 152.80, low: 151.70, close: 170.40, volume: 510000 }
       ]
     },
     {

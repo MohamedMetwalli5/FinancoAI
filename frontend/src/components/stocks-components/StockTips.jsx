@@ -2,20 +2,54 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import { FaRegSquareCaretDown, FaRegSquareCaretUp } from "react-icons/fa6";
 import axios from 'axios';
+import { v4 as uuidv4 } from 'uuid';
+
 
 const StockTips = ({email}) => {
 
-  const [TopTips, setTopTips] = useState([])
+  const [TopTips, setTopTips] = useState([]);
+
+  const token = localStorage.getItem('authToken');
+
+
+  const sendTips = async (event) => {
+    event.preventDefault();
+
+    const newTips = {
+      id: uuidv4(),
+      email: email,
+      text: document.getElementById("tips").value,
+    };
+
+    if(newTips.text){
+      try {
+        const response = await axios.post(`http://localhost:5000/tips`, newTips, {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          });
+        document.getElementById("tips").value = "";
+        // console.log("Fetched data:", response.data);
+      } catch (error) {
+        console.error("Error fetching tips:", error);
+      }
+    }else {
+      alert("You can't add empty tips.");
+    }
+  }
 
   const fetchTopTips = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/users-tips");
+      const response = await axios.get(`http://localhost:5000/tips/${email}`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
       // console.log("Fetched data:", response.data);
       setTopTips(response.data); 
     } catch (error) {
       console.error("Error fetching tips:", error);
     }
-
   }
 
   useEffect(() => {
@@ -34,7 +68,7 @@ const StockTips = ({email}) => {
                 alt="Profile Photo"
                 className="w-8 h-8 rounded-full object-cover"
               />
-              <h3 className="font-bold text-black mr-2">{tips.name}</h3>
+              <h3 className="font-bold text-black mr-2">{tips.email}</h3>
             </div>
             <p className="bg-white shadow-md rounded-md p-3 m-1">{tips.text}</p>
             <div className='flex pl-3'>
@@ -46,12 +80,19 @@ const StockTips = ({email}) => {
       </div>
 
       {/* The Input Section */}
-      <div className="mt-auto">
+      <div className="flex items-center border border-gray-300 rounded-lg overflow-hidden bg-white shadow-sm">
         <input
+          id="tips"
           placeholder="Share Tips"
           className="text-lg p-2 w-full border rounded-md"
         />
+        <button
+          className="bg-green-500 text-white px-6 py-2 mr-1 rounded-md hover:bg-green-600"
+          onClick={sendTips}
+        >Send
+        </button>
       </div>
+
     </div>
   );
 };

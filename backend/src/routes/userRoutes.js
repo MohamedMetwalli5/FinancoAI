@@ -21,7 +21,7 @@ router.get("/", async (req, res) => {
 });
 
 
-// To get the user data info in the "signin" page    Sign-in Route (POST method)
+// To get the user data info in the "signin" page
 router.post("/signin", async (req, res) => {
   const { email, password } = req.body;
   try {
@@ -42,14 +42,7 @@ router.post("/signin", async (req, res) => {
     );
 
     // Sending the user data and token back
-    res.status(200).send({
-      user: {
-        id: user._id,
-        name: user.name,
-        email: user.email,
-      },
-      token: token,
-    });
+    res.status(200).send({token});
   } catch (error) {
     res.status(400).send({ error: error.message });
   }
@@ -57,20 +50,48 @@ router.post("/signin", async (req, res) => {
 
 
 // To update the user info in the "settings" page
-router.put("/:id", authenticateToken, async (req, res) => {
+router.put("/:email", authenticateToken, async (req, res) => {
   try {
-    const { id } = req.params;
-    const { name, hashedpassword, timezone, emailNotifications } = req.body;
+    const { email } = req.params;
+    const { name, passwordHash, timezone, emailNotifications } = req.body;
+
     const updatedUser = await User.findOneAndUpdate(
-      { id },
-      { name, hashedpassword, timezone, emailNotifications },
+      { email },
+      {
+        name, 
+        passwordHash, 
+        preferences: {
+          timezone, 
+          emailNotifications
+        }
+      },
       { new: true }
-    )
+    );
 
     if (!updatedUser) {
       return res.status(404).send({ error: "User not found" });
     }
+
     res.status(200).send(updatedUser);
+  } catch (error) {
+    res.status(400).send({ error: error.message });
+  }
+});
+
+
+// To delete the user account if he wanted in the "settings" page
+router.delete("/:email", authenticateToken, async (req, res) => {
+  try {
+    const { email } = req.params;
+
+    const Theuser = await User.findOne({ email });
+    if (!Theuser) {
+      return res.status(404).send({ error: "User not found" });
+    }
+
+    await User.deleteOne({ email });
+
+    res.status(200).send("User is Deleted Successfully");
   } catch (error) {
     res.status(400).send({ error: error.message });
   }
@@ -82,10 +103,11 @@ router.post("/signup", async (req, res) => {
     try {
         const newUser = await User.create(req.body);
         const token = generateToken(newUser);
-        res.status(201).send({newUser, token});
+        res.status(201).send({token});
     } catch (error) {
         res.status(400).send({ error: error.message });
     }
 });
+
 
 export default router;

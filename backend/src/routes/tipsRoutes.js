@@ -27,8 +27,16 @@ router.post("/", async (req, res) => {
 router.get("/:email", async (req, res) => {
   try {
     const { email } = req.params;
-    let otherUsersTips = await Tips.find(); 
-    otherUsersTips = otherUsersTips.filter((userstips) => userstips.email !== email);
+    const OneUserTips = await Tips.findOne({ email });
+
+    let otherUsersTips;
+    if (!OneUserTips) {
+      otherUsersTips = await Tips.find(); // If there are no tips found for the current user, we return all the tips
+    } else {
+      otherUsersTips = await Tips.find();
+      otherUsersTips = otherUsersTips.filter((userstips) => userstips.email !== email); // fetching and filtering out the current user's tips
+    }
+
     res.status(200).send(otherUsersTips);  // sending the filtered tips
   } catch (error) {
     res.status(400).send({ error: error.message });

@@ -19,7 +19,7 @@ router.put("/:email", async (req, res) => {
 
       const updatedStocks = await SubscribedStocks.findOneAndUpdate(
           { email },
-          { email, subscribedstocks },
+          { email, subscribedstocks: subscribedstocks || [] },
           { new: true, upsert: true }
       );
 
@@ -32,17 +32,30 @@ router.put("/:email", async (req, res) => {
 
 
 
-
 // To get all the subscribed stock of the user (using the user ID which is the stored email in this case here)
 router.get("/:email", async (req, res) => {
   try {
-    const { email } = req.params; 
-    const userSubscribedStocks = await SubscribedStocks.find({ email });
+    const { email } = req.params;
+
+    let userSubscribedStocks = await SubscribedStocks.findOne({ email });
+
+    // If no subscription exists, we create a new document for the user
+    if (!userSubscribedStocks) {
+      userSubscribedStocks = new SubscribedStocks({
+        email,
+        subscribedstocks: [], // Default empty array
+      });
+
+      await userSubscribedStocks.save();
+    }
+
     res.status(200).send(userSubscribedStocks);
   } catch (error) {
+    console.error("Error fetching or saving subscriptions:", error);  // Log the error for debugging
     res.status(400).send({ error: error.message });
   }
 });
+
   
 
 export default router;

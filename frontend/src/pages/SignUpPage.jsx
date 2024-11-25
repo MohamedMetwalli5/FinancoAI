@@ -8,32 +8,34 @@ const SignUpPage = () => {
   const navigate = useNavigate();
 
   const addUser = async (event) => {
-
-    event.preventDefault(); // Preventing the default form submission behavior
-
+    event.preventDefault();
+  
     const newUser = {
-      id: document.getElementById("email").value,  // The unique user ID
+      id: uuidv4(),
       name: document.getElementById("name").value,
       email: document.getElementById("email").value,
-      password: document.getElementById("password").value,
-      timezone: "UTC",
-      emailnotifications : false
+      passwordHash: document.getElementById("password").value,
+      preferences: {
+        timezone: "UTC",
+        emailNotifications: false,
+      },
     };
   
-    if(newUser.name.length > 0 && newUser.email.length > 0 && newUser.password.length > 0){
+    if (newUser.name && newUser.email && newUser.passwordHash) {
       try {
-        const response = await axios.post('http://localhost:5000/users', newUser);
-        console.log('User added:', response.data);
-        navigate('/dashboard');
+        const response = await axios.post("http://localhost:5000/users/signup", newUser);
+        const { token } = response.data;
+        localStorage.setItem("authToken", token);
+        console.log("User added and token stored:", response.data);
+        navigate("/dashboard", {state: {email: newUser.email}});
       } catch (error) {
-        console.error('Error adding user:', error);
+        console.error("Error adding user:", error.response?.data || error.message);
       }
-    }else {
-      console.log('Please fill in all fields.');
+    } else {
+      console.log("Please fill in all fields.");
     }
-
   };
-
+  
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-purple-50 via-white to-purple-100">
       <div className="max-w-md w-full bg-white shadow-lg rounded-lg p-8">

@@ -11,9 +11,16 @@ const GroupedBarChart = ({email}) => {
   const [ChartData, setChartData] = useState([]);
   const [last3MonthsSum, setLast3MonthsSum] = useState([]);
 
+
+  const token = localStorage.getItem('authToken'); // Retrieving the token to be used below
+
   const fetchTransactions = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/transactions");
+      const response = await axios.get(`http://localhost:5000/transactions/${email}`,{
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
       setChartData(response.data);
     } catch (error) {
       console.error("Error fetching transactions:", error);

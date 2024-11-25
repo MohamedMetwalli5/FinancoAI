@@ -9,9 +9,15 @@ const OverviewCards =  ({email}) => {
 
   const [transactions, setTransactions] = useState([]);
 
+  const token = localStorage.getItem('authToken'); // Retrieving the token to be used below
+  
   const fetchTransactions = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/transactions");
+      const response = await axios.get(`http://localhost:5000/transactions/${email}`,{
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
       // console.log("Fetched Transactions:", response.data);
       setTransactions(response.data); // Storing data in the state
     } catch (error) {
@@ -33,8 +39,8 @@ const OverviewCards =  ({email}) => {
       title: "Balance",
       amount: transactions.filter((t) => t.category === "Balance")
                           .reduce((sum, t) => sum+Number(t.amount), 0),
-      percentage: "+12%",
-      trendIcon: <FaArrowTrendUp />,
+      percentage: "",
+      // trendIcon: <FaArrowTrendUp />,
       bgColor: "bg-blue-200",
       secondaryBgColor: "bg-blue-100",
     },
@@ -43,8 +49,8 @@ const OverviewCards =  ({email}) => {
       title: "Income",
       amount: transactions.filter((t) => t.category === "Income")
                           .reduce((sum, t) => sum+Number(t.amount), 0),
-      percentage: "+4%",
-      trendIcon: <FaArrowTrendUp />,
+      percentage: "",
+      // trendIcon: <FaArrowTrendUp />,
       bgColor: "bg-purple-200",
       secondaryBgColor: "bg-purple-100",
     },
@@ -53,8 +59,8 @@ const OverviewCards =  ({email}) => {
       title: "Expenses",
       amount: transactions.filter((t) => t.category === "Expenses")
                           .reduce((sum, t) => sum+Number(t.amount), 0),
-      percentage: "-2%",
-      trendIcon: <FaArrowTrendDown />,
+      percentage: "",
+      // trendIcon: <FaArrowTrendDown />,
       bgColor: "bg-green-200",
       secondaryBgColor: "bg-green-100",
     },

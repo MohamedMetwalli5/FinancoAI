@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 import axios from 'axios';
 
 const CardPopupForm = ({ isOpen, togglePopup, PopupFormTitle, email }) => {
@@ -18,27 +19,35 @@ const CardPopupForm = ({ isOpen, togglePopup, PopupFormTitle, email }) => {
     });
   };
 
+
   const handleSubmit = async (event) => {
     event.preventDefault();
   
     const transaction = {
+      id: uuidv4(),
       category: formData.category,
       amount: formData.amount,
       description: formData.description,
       date: formData.date,
       recurring: formData.recurring,
     };
-
-    // Sending data
+  
+    const token = localStorage.getItem('authToken'); // Retrieving the token to be used below
+  
     try {
-      const response = await axios.post('http://localhost:5000/transactions', transaction);
-      console.log('Submitted Data:', transaction);
+      const response = await axios.post('http://localhost:5000/transactions/', transaction, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      console.log('Submitted Data:', response.data);
     } catch (error) {
-      console.error('Error sending data:', error);
+      console.error('Error sending data:', error.response ? error.response.data : error.message);
     }
   
     togglePopup();
-  };
+  };  
+  
   
 
   return (

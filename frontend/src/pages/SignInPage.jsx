@@ -15,18 +15,14 @@ const SignInPage = () => {
       password: document.getElementById("password").value
     };
   
-    if(user.email.length > 0 && user.password.length > 0){
+    if(user.email && user.password){
       try {
-        const response = await axios.post('http://localhost:5000/signin', user);
+        const response = await axios.post('http://localhost:5000/users/signin', user);
         console.log('signedin successfully!');
 
-        // ToDo
-        // Assuming the response contains a token after successful login
-        // const { token } = response.data;
+        const { token } = response.data;
+        localStorage.setItem('authToken', token); // Storing the token to be used for authentication in future requests
         
-        // Storing the token to be used for authentication in future requests
-        // localStorage.setItem('authToken', token);
-
         navigate('/dashboard', {state: {email: user.email}});
       } catch (error) {
         console.error('Error signing in user:', error);
@@ -37,6 +33,7 @@ const SignInPage = () => {
 
   };
 
+  
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-purple-100 via-white to-purple-50">
       <div className="max-w-md w-full bg-white shadow-lg rounded-lg p-8">
