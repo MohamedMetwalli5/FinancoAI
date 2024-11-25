@@ -54,5 +54,10 @@ The backend will start on http://localhost:5000
 ``` npm start ```
 The frontend will start on http://localhost:5173/
 
+
+---
+
 ## Logo Idea
+The logo for FinancoAI creatively incorporates the phi (Φ) mathematical symbol, representing "Fi" in the name. Each component of the logo is designed to symbolize a letter from the word "FinancoAI," blending mathematical elegance with the brand's financial and AI-driven essence. This design reflects the harmony between innovation, intelligence, and finance that defines FinancoAI.
+![FinancoAi - Website Logo](https://github.com/user-attachments/assets/e1888836-685d-45bd-9a15-60251366bc52)
 
