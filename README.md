@@ -42,7 +42,7 @@ JWT_SECRET=your_secret_key
 ```
 4. Run the Backend
 ``` npm start ```
-The backend will start on http://localhost:5000
+5. The backend will start on http://localhost:5000
 
 
 ## Frontend Setup
@@ -58,7 +58,7 @@ VITE_CHATGPT_API_KEY=your_chatgpt_api_key
 ```
 4. Start the Frontend
 ``` npm start ```
-The frontend will start on http://localhost:5173
+5. The frontend will start on http://localhost:5173
 
 
 ---
