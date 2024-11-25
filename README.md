@@ -52,7 +52,7 @@ The backend will start on http://localhost:5000
 ``` npm install ```
 3. Start the Frontend
 ``` npm start ```
-The frontend will start on http://localhost:5173/
+The frontend will start on http://localhost:5173
 
 
 ---
