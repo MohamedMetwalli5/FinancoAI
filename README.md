@@ -42,7 +42,7 @@ MONGO_URI=your_mongodb_connection_string
 JWT_SECRET=your_secret_key
 ```
 4. Run the Backend
-``` npm start ```
+``` npm run dev ```
 5. The backend will start on http://localhost:5000
 
 
@@ -58,7 +58,7 @@ VITE_TWELVE_DATA_API_KEY=your_twelve_data__api_key
 VITE_CHATGPT_API_KEY=your_chatgpt_api_key
 ```
 4. Start the Frontend
-``` npm start ```
+``` npm run dev ```
 5. The frontend will start on http://localhost:5173
 
 
