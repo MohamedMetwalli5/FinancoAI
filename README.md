@@ -1,5 +1,5 @@
-![Frontend](https://img.shields.io/badge/Frontend-React.js%20-green.svg)
-![Backend](https://img.shields.io/badge/Backend-Node.js%20-orange.svg)
+![Frontend](https://img.shields.io/badge/Frontend-React.js-green.svg)
+![Backend](https://img.shields.io/badge/Backend-Node.js-orange.svg)
 ![License](https://img.shields.io/badge/license-Apache_2.0-red.svg)
 
 <div align="center">
@@ -54,4 +54,5 @@ The backend will start on http://localhost:5000
 ``` npm start ```
 The frontend will start on http://localhost:5173/
 
-## 
+## Logo Idea
+
