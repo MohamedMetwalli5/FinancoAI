@@ -65,7 +65,7 @@ const StockData = ({email}) => {
 
   
   useEffect(() => {
-    // fetchStockData();
+    fetchStockData();
     fetchSubscribedStocks();
   }, []);
 
