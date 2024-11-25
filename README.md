@@ -1,4 +1,4 @@
-![Frontend](https://img.shields.io/badge/Frontend-React.js-green.svg)
+![Frontend](https://img.shields.io/badge/Frontend-React.js-blue.svg)
 ![Backend](https://img.shields.io/badge/Backend-Express.js%20-yellow.svg)
 ![License](https://img.shields.io/badge/license-Apache_2.0-red.svg)
 
