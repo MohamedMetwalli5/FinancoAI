@@ -34,7 +34,7 @@ FinancoAI is a smart financial assistant that combines real-time stock tracking 
 2. Install Dependencies
 ``` npm install ```
 3. Configure Environment Variables
-Create a .env file in the backend directory with the following:
+After installing MongoDB, configure the database URI by creating a ```.env``` file in the backend directory with the following content:
 ```
 PORT=5000
 MONGO_URI=your_mongodb_connection_string
@@ -50,7 +50,13 @@ The backend will start on http://localhost:5000
 ``` cd frontend ```
 2. Install Dependencies
 ``` npm install ```
-3. Start the Frontend
+3. Configure Environment Variables
+Create a ```.env``` file in the frontend directory with the following content:
+```
+VITE_TWELVE_DATA_API_KEY=your_twelve_data__api_key
+VITE_CHATGPT_API_KEY=your_chatgpt_api_key
+```
+4. Start the Frontend
 ``` npm start ```
 The frontend will start on http://localhost:5173
 
