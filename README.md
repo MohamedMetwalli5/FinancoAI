@@ -1,8 +1,10 @@
 ![Frontend](https://img.shields.io/badge/Frontend-React.js%20-green.svg)
 ![Backend](https://img.shields.io/badge/Backend-Node.js%20-orange.svg)
 ![License](https://img.shields.io/badge/license-Apache_2.0-red.svg)
-![TheWebsiteLogo](https://github.com/user-attachments/assets/e818d50b-37e8-40e1-a980-5a21d87c3d6f)
-![FinancoAi - Website Logo](https://github.com/user-attachments/assets/1cec3f42-ce6c-4e5a-9490-623c2a6e1dbd)
+
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/e818d50b-37e8-40e1-a980-5a21d87c3d6f" alt="The Website Logo" width="200" />
+</div>
 
 
 
