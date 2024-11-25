@@ -1,5 +1,5 @@
 ![Frontend](https://img.shields.io/badge/Frontend-React.js-blue.svg)
-![Backend](https://img.shields.io/badge/Backend-Express.js%20-green.svg)
+![Backend](https://img.shields.io/badge/Backend-Express.js%20-brightgreen.svg)
 ![Database](https://img.shields.io/badge/Database-MongoDB%20-violet.svg)
 ![License](https://img.shields.io/badge/license-Apache_2.0-red.svg)
 
