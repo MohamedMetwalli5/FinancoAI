@@ -1,23 +1,22 @@
 import mongoose from "mongoose";
 
-// The subscribed stocks schema
 const subscribedStocksSchema = new mongoose.Schema(
-  {
-    id: {
-      type: String,
-      required: true,
-      unique: true,
+    {
+        email: {
+            type: String,
+            required: true,
+            unique: true,
+        },
+        subscribedstocks: {
+            type: [String],
+            default: [],
+        },
     },
-    subscribedstocks: {
-      type: [String],
-      required: true,
-    },
-  },
-  {
-    timestamps: true, 
-  }
+    {
+        timestamps: true,
+    }
 );
 
-const SubscribedStocks = mongoose.model("subscribedstocks", subscribedStocksSchema);
+const SubscribedStocks = mongoose.model("SubscribedStocks", subscribedStocksSchema);
 
 export default SubscribedStocks;

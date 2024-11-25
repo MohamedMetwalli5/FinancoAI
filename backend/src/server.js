@@ -1,5 +1,7 @@
-import express from "express";
 import dotenv from "dotenv";
+dotenv.config();
+import express from "express";
+
 import { v4 as uuidv4 } from 'uuid';
 import db from "./config/db.js";
 import userRoutes from "./routes/userRoutes.js";
@@ -7,7 +9,6 @@ import trasactionRoutes from "./routes/transactionRoutes.js";
 import tipsRoutes from "./routes/tipsRoutes.js";
 import subscribedStocksRoutes from "./routes/subscribedStocksRoutes.js";
 
-dotenv.config();
 
 const port = process.env.PORT || 5001;
 

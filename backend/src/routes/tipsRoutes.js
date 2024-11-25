@@ -1,7 +1,12 @@
 import express from "express";
+import { v4 as uuidv4 } from 'uuid';
 import Tips from "../models/tips.js";
+import authenticateToken from "../middlewares/authMiddleware.js";
 
 const router = express.Router();
+
+router.use(authenticateToken);
+
 
 // To add a new tips from the user in the "Dashboard" page
 router.post("/", async (req, res) => {

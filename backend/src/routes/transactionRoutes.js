@@ -1,7 +1,11 @@
 import express from "express";
 import Transaction from "../models/transaction.js";
+import authenticateToken from "../middlewares/authMiddleware.js";
 
 const router = express.Router();
+
+router.use(authenticateToken);
+
 
 // To add a new transaction from the user in the "Dashboard" page
 router.post("/", async (req, res) => {
