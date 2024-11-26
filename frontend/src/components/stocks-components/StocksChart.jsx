@@ -24,20 +24,27 @@ ChartJS.register(
 
 const StocksChart = ({email}) => {
 
-  const [currentSubscriptions, setCurrentSubscriptions] = useState([]);
+  const [currentSubscriptions, setCurrentSubscriptions] = useState(["AAPL, AMZN, GOOGL"]);
 
-  const fetchStockData = async () => {
-    if (!email) {
-      console.error("Email is undefined.");
-      return;
+  const token = localStorage.getItem("authToken");
+
+  const fetchSubscribedStocks = async () => {
+    try {
+      const response = await axios.get(`http://localhost:5000/subscribed-stocks/${email}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      // console.log("fdsfsdfsdfdsf", response.data);
+      setCurrentSubscriptions(response.data.subscribedstocks);
+    } catch (error) {
+      console.error('Error fetching subscriptions:', error);
     }
-    const {data} = await axios.get(`http://localhost:5000/subscribed-stocks/${email}`);
-    const currentSubscriptions = data.subscribedstocks;
-    setCurrentSubscriptions(currentSubscriptions);
-  }
+  };
+
 
   useEffect(() => {
-    fetchStockData();
+    fetchSubscribedStocks();
   }, [])
   
   // I used mock data here for demonstration purposes; the same approach can be applied to live data in the stocks watchlist
@@ -53,12 +60,22 @@ const StocksChart = ({email}) => {
       ]
     },
     {
+      symbol: "AMZN",
+      data: [
+        { datetime: "2024-11-20 10:00:00", open: 2800.00, high: 2805.00, low: 2790.00, close: 102.50, volume: 120000 },
+        { datetime: "2024-11-20 10:01:00", open: 2802.50, high: 2810.00, low: 2800.00, close: 157.00, volume: 125000 },
+        { datetime: "2024-11-20 10:02:00", open: 2807.00, high: 2812.00, low: 2805.00, close: 300.50, volume: 115000 },
+        { datetime: "2024-11-20 10:03:00", open: 2809.50, high: 2815.00, low: 2808.00, close: 205.00, volume: 130000 },
+        { datetime: "2024-11-20 10:04:00", open: 2812.00, high: 2816.00, low: 2810.00, close: 240.50, volume: 140000 }
+      ]
+    },
+    {
       symbol: "GOOGL",
       data: [
         { datetime: "2024-11-20 10:00:00", open: 2800.00, high: 2805.00, low: 2790.00, close: 202.50, volume: 120000 },
         { datetime: "2024-11-20 10:01:00", open: 2802.50, high: 2810.00, low: 2800.00, close: 107.00, volume: 125000 },
         { datetime: "2024-11-20 10:02:00", open: 2807.00, high: 2812.00, low: 2805.00, close: 150.50, volume: 115000 },
-        { datetime: "2024-11-20 10:03:00", open: 2809.50, high: 2815.00, low: 2808.00, close: 105.00, volume: 130000 },
+        { datetime: "2024-11-20 10:03:00", open: 2809.50, high: 2815.00, low: 2808.00, close: 125.00, volume: 130000 },
         { datetime: "2024-11-20 10:04:00", open: 2812.00, high: 2816.00, low: 2810.00, close: 140.50, volume: 140000 }
       ]
     }
@@ -75,7 +92,7 @@ const StocksChart = ({email}) => {
   
   const data = {
     labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep"],
-    datasets: mockStockData.map(stock => {
+    datasets: mockStockData.filter(stock => currentSubscriptions.includes(stock.symbol)).map(stock => {
       const color = getRandomColor();
       return{
         label: stock.symbol || "",

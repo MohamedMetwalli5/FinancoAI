@@ -72,8 +72,8 @@ const StockTips = ({email}) => {
             </div>
             <p className="bg-white shadow-md rounded-md p-3 m-1">{tips.text}</p>
             <div className='flex pl-3'>
-              <FaRegSquareCaretUp className='text-green-500 cursor-pointer'/>
-              <FaRegSquareCaretDown className='text-red-500 cursor-pointer'/>
+              {/* <FaRegSquareCaretUp className='text-green-500 cursor-pointer'/>
+              <FaRegSquareCaretDown className='text-red-500 cursor-pointer'/> */}
             </div>
           </div>
         ))}
