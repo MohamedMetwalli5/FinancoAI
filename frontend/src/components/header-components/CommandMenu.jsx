@@ -33,18 +33,18 @@ export const CommandMenu = ({ open, setOpen }) => {
         </Command.Empty>
 
         <Command.Group heading="Finance" className="p-1 mb-5 text-stone-300">
-          <Command.Item className="flex text-slate-700 font-bold p-2 cursor-pointer hover:bg-stone-300 rounded-sm">Stocks</Command.Item>
-          <Command.Item className="flex text-slate-700 font-bold p-2 cursor-pointer hover:bg-stone-300 rounded-sm">Gold</Command.Item>
-          <Command.Item className="flex text-slate-700 font-bold p-2 cursor-pointer hover:bg-stone-300 rounded-sm">Real Estate</Command.Item>
+          <Command.Item onSelect={() => window.open("https://www.bloomberg.com/markets/stocks", "_blank")} className="flex text-slate-700 font-bold p-2 cursor-pointer hover:bg-stone-300 rounded-sm">Stocks</Command.Item>
+          <Command.Item onSelect={() => window.open("https://goldprice.org", "_blank")} className="flex text-slate-700 font-bold p-2 cursor-pointer hover:bg-stone-300 rounded-sm">Gold</Command.Item>
+          <Command.Item onSelect={() => window.open("https://www.globalpropertyguide.com", "_blank")} className="flex text-slate-700 font-bold p-2 cursor-pointer hover:bg-stone-300 rounded-sm">Real Estate</Command.Item>
         </Command.Group>
 
         <Command.Group heading="About Us" className="p-1 mb-5 text-stone-300">
-            <Command.Item className="flex text-slate-700 font-bold space-x-2 gap-2 items-center p-2 cursor-pointer hover:bg-stone-300 rounded-sm">
-                <FaRegEnvelope/> Contact Me
+            <Command.Item onSelect={() => window.open("https://www.linkedin.com/in/mohamed-metwalli5", "_blank")} className="flex text-slate-700 font-bold space-x-2 gap-2 items-center p-2 cursor-pointer hover:bg-stone-300 rounded-sm">
+                <FaRegEnvelope /> Contact Me
             </Command.Item>
         </Command.Group>
 
-        <Command.Item className="flex items-center space-x-2 gap-2 p-2 cursor-pointer hover:bg-stone-300 rounded-sm">
+        <Command.Item onSelect={() => window.open("https://github.com/MohamedMetwalli5/FinancoAI", "_blank")} className="flex items-center space-x-2 gap-2 p-2 cursor-pointer hover:bg-stone-300 rounded-sm">
             <FaPlus/> Invite Friend
         </Command.Item>
       </Command.List>
