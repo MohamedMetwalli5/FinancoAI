@@ -39,7 +39,7 @@ FinancoAI is a smart financial assistant that combines real-time stock tracking 
 3. After installing MongoDB, configure the database URI by creating a ```.env``` file in the backend directory with the following content:
 ```
 PORT=5000
-MONGO_URI=your_mongodb_connection_string
+MONGODB_URL=your_mongodb_connection_string
 JWT_SECRET=your_secret_key
 ```
 4. Run the Backend
