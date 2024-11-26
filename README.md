@@ -13,6 +13,7 @@
 
 FinancoAI is a smart financial assistant that combines real-time stock tracking with personalized dashboards. It offers budgeting tips, investment insights, and AI-powered recommendations to help users make informed financial decisions effortlessly.
 
+
 ---
 
 # Features
