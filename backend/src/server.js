@@ -4,7 +4,6 @@ import express from "express";
 import cors from "cors";
 import db from "./config/db.js";
 
-import { v4 as uuidv4 } from 'uuid';
 import userRoutes from "./routes/userRoutes.js";
 import trasactionRoutes from "./routes/transactionRoutes.js";
 import tipsRoutes from "./routes/tipsRoutes.js";
