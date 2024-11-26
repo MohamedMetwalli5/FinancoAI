@@ -3,11 +3,13 @@ import { useState, useEffect } from 'react';
 import { FaRegSquareCaretDown, FaRegSquareCaretUp } from "react-icons/fa6";
 import axios from 'axios';
 import { v4 as uuidv4 } from 'uuid';
+import DOMPurify from 'dompurify';
 
 
 const StockTips = ({email}) => {
 
   const [TopTips, setTopTips] = useState([]);
+  const [tip, setTip] = useState('');
 
   const token = localStorage.getItem('authToken');
 
@@ -15,10 +17,15 @@ const StockTips = ({email}) => {
   const sendTips = async (event) => {
     event.preventDefault();
 
+    if (tip.length > 500) {
+      alert("Tip is too long");
+      return;
+    }
+
     const newTips = {
       id: uuidv4(),
       email: email,
-      text: document.getElementById("tips").value,
+      text: tip,
     };
 
     if(newTips.text){
@@ -51,6 +58,11 @@ const StockTips = ({email}) => {
       console.error("Error fetching tips:", error);
     }
   }
+
+  const handleInputChange = (e) => {
+    const sanitizedInput = DOMPurify.sanitize(e.target.value);
+    setTip(sanitizedInput);
+  };
 
   useEffect(() => {
     fetchTopTips();
@@ -85,6 +97,8 @@ const StockTips = ({email}) => {
           id="tips"
           placeholder="Share Tips"
           className="text-lg p-2 w-full border rounded-md"
+          value={tip}
+          onChange={handleInputChange}
         />
         <button
           className="bg-green-500 text-white px-6 py-2 mr-1 rounded-md hover:bg-green-600"
