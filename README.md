@@ -66,7 +66,7 @@ VITE_CHATGPT_API_KEY=your_chatgpt_api_key
 ---
 
 # The ER Diagram
-![The ER Diagram](https://github.com/user-attachments/assets/b2041015-999e-42f6-9ded-61c179004690)
+![image](https://github.com/user-attachments/assets/0f6f3d13-e494-40b1-809d-4e764f1aad7b)
 
 
 ---
