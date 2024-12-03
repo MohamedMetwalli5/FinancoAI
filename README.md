@@ -1,4 +1,4 @@
-![The ER Diagram](https://github.com/user-attachments/assets/b2041015-999e-42f6-9ded-61c179004690)![Frontend](https://img.shields.io/badge/Frontend-React.js-blue.svg)
+![Frontend](https://img.shields.io/badge/Frontend-React.js-blue.svg)
 ![Backend](https://img.shields.io/badge/Backend-Express.js%20-brightgreen.svg)
 ![Database](https://img.shields.io/badge/Database-MongoDB%20-green.svg)
 ![License](https://img.shields.io/badge/license-Apache_2.0-red.svg)
@@ -66,7 +66,7 @@ VITE_CHATGPT_API_KEY=your_chatgpt_api_key
 ---
 
 # The ER Diagram
-![image](https://github.com/user-attachments/assets/0a15ad2b-c58e-4013-b685-30a6ba15dc46)
+![The ER Diagram](https://github.com/user-attachments/assets/b2041015-999e-42f6-9ded-61c179004690)
 
 
 ---
