@@ -1,18 +1,27 @@
 import React from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { useContext } from 'react';
+import { AppContext } from '../AppContext.jsx';
+import hash from 'hash.js';
+
+
 
 const SignInPage = () => {
 
+  const { setSharedUserEmail } = useContext(AppContext);
+  
   const navigate = useNavigate();
 
   const signIn = async (event) => {
 
     event.preventDefault(); // Preventing the default form submission behavior
+    
+    const passwordHash = hash.sha256().update(document.getElementById("password").value).digest('hex');
 
     const user = {
       email: document.getElementById("email").value,
-      password: document.getElementById("password").value
+      password: passwordHash
     };
   
     if(user.email && user.password){
@@ -23,7 +32,9 @@ const SignInPage = () => {
         const { token } = response.data;
         localStorage.setItem('authToken', token); // Storing the token to be used for authentication in future requests
         
-        navigate('/dashboard', {state: {email: user.email}});
+        setSharedUserEmail(user.email);
+        localStorage.setItem('sharedUserEmail', user.email);
+        navigate('/dashboard');
       } catch (error) {
         console.error('Error signing in user:', error);
       }

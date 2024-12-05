@@ -1,14 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import axios from 'axios';
 import Sidebar from '../components/Sidebar';
 import Header from '../components/Header';
-import { useLocation } from 'react-router-dom';
+import { AppContext } from '../AppContext.jsx';
+
+
 
 const AIModelsPage = () => {
-  const location = useLocation();
-  const { email } = location.state || {};
+  const { sharedUserEmail } = useContext(AppContext);
 
-  const name = email;
+  const name = sharedUserEmail;
   const [userMessage, setUserMessage] = useState('');
   const [chatResponse, setChatResponse] = useState('');
   const [loading, setLoading] = useState(false);
@@ -73,17 +74,17 @@ const AIModelsPage = () => {
   return (
     <>
       <div className="flex h-screen">
-        <Sidebar email={email} />
+        <Sidebar/>
         <div className="flex-1 pl-4 ml-64">
           <div>
-            <Header email={email} />
+            <Header/>
           </div>
           <div
             id="Chatting"
             className="flex flex-col items-center justify-center h-full bg-gradient-to-br rounded-lg from-purple-100 to-white text-gray-800"
           >
             <div className="text-center mb-8">
-              <h1 className="text-3xl font-bold">Hi, {name}</h1>
+              <h1 className="text-3xl font-bold">Hi, {sharedUserEmail}</h1>
               <p className="text-xl mt-2">Can I help you with anything?</p>
               <p className="text-gray-600 mt-2">
                 Welcome to FinancoAI, your partner for smarter financial decisions and insights!

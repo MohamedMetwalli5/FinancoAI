@@ -1,8 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { FaCircleMinus, FaCirclePlus, FaArrowUp, FaArrowDown } from "react-icons/fa6";
 import axios from 'axios';
+import { AppContext } from '../../AppContext.jsx';
 
-const StockData = ({email}) => {
+
+
+const StockData = () => {
+  
+  const { sharedUserEmail } = useContext(AppContext);
     
   const mockStockData = {
     AAPL: { symbol: "AAPL", price: "", percent_change: "-0.16097", name: "Apple Inc" },
@@ -50,7 +55,7 @@ const StockData = ({email}) => {
   // Fetching already user subscriptions
   const fetchSubscribedStocks = async () => {
     try {
-      const response = await axios.get(`http://localhost:5000/subscribed-stocks/${email}`, {
+      const response = await axios.get(`http://localhost:5000/subscribed-stocks/${sharedUserEmail}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -72,12 +77,12 @@ const StockData = ({email}) => {
 
   const addSubscription = async (newSymbol) => {
     try {
-      if (!email) {
+      if (!sharedUserEmail) {
         console.error("Email is undefined. Cannot update subscriptions.");
         return;
       }
       // Fetching the current subscriptions from the backend
-      const { data } = await axios.get(`http://localhost:5000/subscribed-stocks/${email}`, {
+      const { data } = await axios.get(`http://localhost:5000/subscribed-stocks/${sharedUserEmail}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -88,7 +93,7 @@ const StockData = ({email}) => {
 
       // Sending the updated list back to the server
       const response = await axios.put(
-        `http://localhost:5000/subscribed-stocks/${email}`,
+        `http://localhost:5000/subscribed-stocks/${sharedUserEmail}`,
         { subscribedstocks: updatedSubscriptions }, {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -105,7 +110,7 @@ const StockData = ({email}) => {
 
   const removeSubscription = async (symbolToRemove) => {
     try {
-      const { data } = await axios.get(`http://localhost:5000/subscribed-stocks/${email}`, {
+      const { data } = await axios.get(`http://localhost:5000/subscribed-stocks/${sharedUserEmail}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -113,7 +118,7 @@ const StockData = ({email}) => {
       const currentSubscriptions = data.subscribedstocks || [];
       const updatedSubscriptions = currentSubscriptions.filter((item) => item !== symbolToRemove);
 
-      await axios.put(`http://localhost:5000/subscribed-stocks/${email}`, 
+      await axios.put(`http://localhost:5000/subscribed-stocks/${sharedUserEmail}`, 
         { subscribedstocks: updatedSubscriptions }, {
         headers: {
           Authorization: `Bearer ${token}`,

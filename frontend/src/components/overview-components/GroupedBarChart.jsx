@@ -1,11 +1,17 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { Bar } from 'react-chartjs-2';
 import { Chart as ChartJS, CategoryScale, BarElement, Title, Tooltip, Legend } from 'chart.js';
 import axios from 'axios'; 
+import { AppContext } from '../../AppContext.jsx';
+
+
 
 ChartJS.register(CategoryScale, BarElement, Title, Tooltip, Legend);
 
-const GroupedBarChart = ({email}) => {
+const GroupedBarChart = () => {
+
+  const { sharedUserEmail } = useContext(AppContext);
+
   const MonthAbbreviations = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
   
   const [ChartData, setChartData] = useState([]);
@@ -16,7 +22,7 @@ const GroupedBarChart = ({email}) => {
 
   const fetchTransactions = async () => {
     try {
-      const response = await axios.get(`http://localhost:5000/transactions/${email}`,{
+      const response = await axios.get(`http://localhost:5000/transactions/${sharedUserEmail}`,{
         headers: {
           Authorization: `Bearer ${token}`,
         },

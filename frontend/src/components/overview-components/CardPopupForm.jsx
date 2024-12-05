@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import axios from 'axios';
 
-const CardPopupForm = ({ isOpen, togglePopup, PopupFormTitle, email }) => {
+
+
+const CardPopupForm = ({ isOpen, togglePopup, PopupFormTitle }) => {
   const [formData, setFormData] = useState({
     amount: '',
     description: '',

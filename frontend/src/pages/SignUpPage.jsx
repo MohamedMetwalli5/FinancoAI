@@ -2,19 +2,26 @@ import React from 'react';
 import axios from 'axios';
 import { v4 as uuidv4 } from 'uuid';
 import { useNavigate } from 'react-router-dom';
+import { AppContext } from '../AppContext.jsx';
+import { useContext } from 'react';
+import hash from 'hash.js';
+
+
 
 const SignUpPage = () => {
 
+  const { setSharedUserEmail } = useContext(AppContext);
+  
   const navigate = useNavigate();
 
   const addUser = async (event) => {
     event.preventDefault();
-  
+    const passwordHash = hash.sha256().update(document.getElementById("password").value).digest('hex');
     const newUser = {
       id: uuidv4(),
       name: document.getElementById("name").value,
       email: document.getElementById("email").value,
-      passwordHash: document.getElementById("password").value,
+      passwordHash,
       preferences: {
         timezone: "UTC",
         emailNotifications: false,
@@ -27,7 +34,10 @@ const SignUpPage = () => {
         const { token } = response.data;
         localStorage.setItem("authToken", token);
         console.log("User added and token stored:", response.data);
-        navigate("/dashboard", {state: {email: newUser.email}});
+        
+        setSharedUserEmail(newUser.email);
+        localStorage.setItem('sharedUserEmail', newUser.email);
+        navigate("/dashboard");
       } catch (error) {
         console.error("Error adding user:", error.response?.data || error.message);
       }

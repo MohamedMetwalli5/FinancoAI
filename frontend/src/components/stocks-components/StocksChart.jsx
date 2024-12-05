@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import { Line } from "react-chartjs-2";
+import { AppContext } from '../../AppContext.jsx';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -22,7 +23,11 @@ ChartJS.register(
   Legend
 );
 
-const StocksChart = ({email}) => {
+
+
+const StocksChart = () => {
+
+  const { sharedUserEmail } = useContext(AppContext);
 
   const [currentSubscriptions, setCurrentSubscriptions] = useState(["AAPL, AMZN, GOOGL"]);
 
@@ -30,7 +35,7 @@ const StocksChart = ({email}) => {
 
   const fetchSubscribedStocks = async () => {
     try {
-      const response = await axios.get(`http://localhost:5000/subscribed-stocks/${email}`, {
+      const response = await axios.get(`http://localhost:5000/subscribed-stocks/${sharedUserEmail}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

@@ -1,9 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { AppContext } from '../AppContext.jsx';
+import hash from 'hash.js';
 
-const Settings = ({email}) => {
 
+
+const Settings = () => {
+
+  const { sharedUserEmail } = useContext(AppContext);
+  
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
   const [timezone, setTimezone] = useState('UTC');
@@ -17,10 +23,10 @@ const Settings = ({email}) => {
 
   const save = async (event) => {
     event.preventDefault();
-
+    const passwordHash = hash.sha256().update(document.getElementById("password").value).digest('hex');
     const updatedUser = {
       name,
-      passwordHash: document.getElementById("password").value,
+      passwordHash,
       timezone,
       emailNotifications,
     };
@@ -28,7 +34,7 @@ const Settings = ({email}) => {
   
     if (updatedUser.name && updatedUser.passwordHash) {
       try {
-        const response = await axios.put(`http://localhost:5000/users/${email}`, updatedUser, {
+        const response = await axios.put(`http://localhost:5000/users/${sharedUserEmail}`, updatedUser, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -48,7 +54,7 @@ const Settings = ({email}) => {
 
   const deleteAccount = async () => {
     try {
-      const response = await axios.delete(`http://localhost:5000/users/${email}`, {
+      const response = await axios.delete(`http://localhost:5000/users/${sharedUserEmail}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

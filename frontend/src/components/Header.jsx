@@ -2,10 +2,16 @@ import Notifications from "../components/notifications/Notifications";
 import NoNotifications from "../components/notifications/NoNotifications";
 import Searchbar from "./header-components/Searchbar";
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { AppContext } from '../AppContext.jsx';
 
-const Header = ({email}) => {
 
-  const name = email.substring(0, email.indexOf("@")) + "...";
+
+const Header = () => {
+
+  const { sharedUserEmail } = useContext(AppContext);
+
+  const name = sharedUserEmail.substring(0, sharedUserEmail.indexOf("@")) + "...";
 
   const ThereAreNotifications = false;
   const navigate = useNavigate();
@@ -14,7 +20,7 @@ const Header = ({email}) => {
     <>
       <div className="flex items-center justify-between pb-4 p-1">
         <div>
-          <h1 className="text-2xl font-bold text-black-500 font-serif">Good morning, {name} </h1>
+          <h1 className="text-2xl font-bold text-black-500 font-serif">Good morning, {sharedUserEmail} </h1>
           <h2 className="font-semibold text-gray-500">Long time no see</h2>
         </div>
       
@@ -23,8 +29,8 @@ const Header = ({email}) => {
             <Searchbar/> 
           </div>
           {/* {ThereAreNotifications == true? <Notifications /> : <NoNotifications />} */}
-          <div onClick={() => navigate('/settings', {state: {email: email}})} className="flex items-center justify-center p-4 cursor-pointer">
-            <h3 className="font-bold text-black mr-2">{name} </h3>
+          <div onClick={() => navigate('/settings')} className="flex items-center justify-center p-4 cursor-pointer">
+            <h3 className="font-bold text-black mr-2">{sharedUserEmail} </h3>
             <img
               src="/src/assets/images/PersonalPhoto.png"
               alt="Profile Photo"

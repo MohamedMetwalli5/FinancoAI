@@ -1,12 +1,16 @@
 import React from 'react';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { FaRegSquareCaretDown, FaRegSquareCaretUp } from "react-icons/fa6";
 import axios from 'axios';
 import { v4 as uuidv4 } from 'uuid';
 import DOMPurify from 'dompurify';
+import { AppContext } from '../../AppContext.jsx';
 
 
-const StockTips = ({email}) => {
+
+const StockTips = () => {
+
+  const { sharedUserEmail } = useContext(AppContext);
 
   const [TopTips, setTopTips] = useState([]);
   const [tip, setTip] = useState('');
@@ -24,7 +28,7 @@ const StockTips = ({email}) => {
 
     const newTips = {
       id: uuidv4(),
-      email: email,
+      email: sharedUserEmail,
       text: tip,
     };
 
@@ -47,7 +51,7 @@ const StockTips = ({email}) => {
 
   const fetchTopTips = async () => {
     try {
-      const response = await axios.get(`http://localhost:5000/tips/${email}`, {
+      const response = await axios.get(`http://localhost:5000/tips/${sharedUserEmail}`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },

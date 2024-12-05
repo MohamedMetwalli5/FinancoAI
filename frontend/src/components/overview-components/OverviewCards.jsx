@@ -1,9 +1,15 @@
 import { FaWallet, FaPenToSquare, FaArrowRightToBracket, FaArrowRightFromBracket, FaArrowTrendUp, FaArrowTrendDown } from "react-icons/fa6";
 import CardPopupForm from "./CardPopupForm";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import axios from "axios";
+import { AppContext } from '../../AppContext.jsx';
 
-const OverviewCards =  ({email}) => {
+
+
+const OverviewCards =  () => {
+
+  const { sharedUserEmail } = useContext(AppContext);
+
   const [isOpen, setIsOpen] = useState(false);
   const [PopupFormTitle, setPopupFormTitle] = useState("Balance");
 
@@ -13,7 +19,7 @@ const OverviewCards =  ({email}) => {
   
   const fetchTransactions = async () => {
     try {
-      const response = await axios.get(`http://localhost:5000/transactions/${email}`,{
+      const response = await axios.get(`http://localhost:5000/transactions/${sharedUserEmail}`,{
         headers: {
           Authorization: `Bearer ${token}`,
         },

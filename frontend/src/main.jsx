@@ -9,18 +9,22 @@ import SettingsPage from './pages/SettingsPage.jsx';
 import AIModelsPage from './pages/AIModelsPage.jsx';
 import SignUpPage from './pages/SignUpPage.jsx';
 import SignInPage from './pages/SignInPage.jsx';
+import {DataProvider} from '../src/AppContext.jsx';
+
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <Router>
-      <Routes>
-        <Route path="/" element={<SignUpPage />} />
-        <Route path="/signin" element={<SignInPage />} />
-        <Route path="/dashboard" element={<HomePage />} />
-        <Route path="/market-news" element={<MarketNewsPage />} />
-        <Route path="/ai-models" element={<AIModelsPage />} />
-        <Route path="/settings" element={<SettingsPage />} />
-      </Routes>
+      <DataProvider>
+        <Routes>
+          <Route path="/" element={<SignUpPage />} />
+          <Route path="/signin" element={<SignInPage />} />
+          <Route path="/dashboard" element={<HomePage />} />
+          <Route path="/market-news" element={<MarketNewsPage />} />
+          <Route path="/ai-models" element={<AIModelsPage />} />
+          <Route path="/settings" element={<SettingsPage />} />
+        </Routes>
+      </DataProvider>
     </Router>
   </StrictMode>
 );
