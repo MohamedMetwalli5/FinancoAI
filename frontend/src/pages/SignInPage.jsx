@@ -33,7 +33,6 @@ const SignInPage = () => {
         localStorage.setItem('authToken', token); // Storing the token to be used for authentication in future requests
         
         setSharedUserEmail(user.email);
-        localStorage.setItem('sharedUserEmail', user.email);
         navigate('/dashboard');
       } catch (error) {
         console.error('Error signing in user:', error);

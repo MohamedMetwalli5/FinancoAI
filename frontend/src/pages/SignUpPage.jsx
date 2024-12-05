@@ -36,7 +36,6 @@ const SignUpPage = () => {
         console.log("User added and token stored:", response.data);
         
         setSharedUserEmail(newUser.email);
-        localStorage.setItem('sharedUserEmail', newUser.email);
         navigate("/dashboard");
       } catch (error) {
         console.error("Error adding user:", error.response?.data || error.message);
