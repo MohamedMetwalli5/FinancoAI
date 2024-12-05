@@ -11,6 +11,10 @@ const Header = () => {
 
   const { sharedUserEmail } = useContext(AppContext);
 
+  if(!sharedUserEmail){
+    alert("Please, sign in.");
+  }
+
   const name = sharedUserEmail.substring(0, sharedUserEmail.indexOf("@")) + "...";
 
   const ThereAreNotifications = false;

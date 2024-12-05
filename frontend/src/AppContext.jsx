@@ -8,6 +8,7 @@ const DataProvider = ({ children }) => {
     const [sharedUserEmail, setSharedUserEmail] = useState(() => {
         return localStorage.getItem('sharedUserEmail') || "";
     });
+    
 
     // Updating the local storage whenever the sharedUserEmail state changes
     useEffect(() => {
