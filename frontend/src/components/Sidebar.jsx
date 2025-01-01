@@ -16,9 +16,6 @@ const SideBar = () => {
         <button onClick={() => navigate('/dashboard')} className="flex items-center justify-start w-full p-3 mt-4 mb-2 rounded-lg bg-gray-100 hover:bg-gray-200 transition-all">
           <FaClipboardList className="mr-4 text-xl text-gray-700"/> Dashboard
         </button>
-        <button onClick={() => navigate('/ai-models')} className="flex items-center justify-start w-full p-3 mb-2 rounded-lg bg-gray-100 hover:bg-gray-200 transition-all">
-          <FaRobot className="mr-4 text-xl text-gray-700" /> AI Models
-        </button>
         <button onClick={() => navigate('/market-news')} className="flex items-center justify-start w-full p-3 mb-2 rounded-lg bg-gray-100 hover:bg-gray-200 transition-all">
           <FaRegNewspaper className="mr-4 text-xl text-gray-700" /> Market News
         </button>

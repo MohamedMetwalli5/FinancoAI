@@ -1,12 +1,9 @@
-import React from 'react';
-import { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { FaRegSquareCaretDown, FaRegSquareCaretUp } from "react-icons/fa6";
 import axios from 'axios';
 import { v4 as uuidv4 } from 'uuid';
 import DOMPurify from 'dompurify';
 import { AppContext } from '../../AppContext.jsx';
-
-
 
 const StockTips = () => {
 
@@ -16,7 +13,6 @@ const StockTips = () => {
   const [tip, setTip] = useState('');
 
   const token = localStorage.getItem('authToken');
-
 
   const sendTips = async (event) => {
     event.preventDefault();
@@ -32,19 +28,19 @@ const StockTips = () => {
       text: tip,
     };
 
-    if(newTips.text){
+    if (newTips.text) {
       try {
         const response = await axios.post(`http://localhost:5000/tips`, newTips, {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          });
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
         document.getElementById("tips").value = "";
         // console.log("Fetched data:", response.data);
       } catch (error) {
         console.error("Error fetching tips:", error);
       }
-    }else {
+    } else {
       alert("You can't add empty tips.");
     }
   }
@@ -52,12 +48,12 @@ const StockTips = () => {
   const fetchTopTips = async () => {
     try {
       const response = await axios.get(`http://localhost:5000/tips/${sharedUserEmail}`, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
       // console.log("Fetched data:", response.data);
-      setTopTips(response.data); 
+      setTopTips(response.data);
     } catch (error) {
       console.error("Error fetching tips:", error);
     }
@@ -71,12 +67,11 @@ const StockTips = () => {
   useEffect(() => {
     fetchTopTips();
   }, [])
-  
 
   return (
     <div className="flex flex-col bg-slate-100 w-full p-4 rounded-lg h-full">
       <div className="flex-grow h-64 overflow-y-auto">
-        {TopTips.map((tips, index)=>(        
+        {TopTips.map((tips, index) => (
           <div key={index} className="mb-4">
             <div className="flex gap-2 items-center p-1">
               <img
@@ -96,18 +91,19 @@ const StockTips = () => {
       </div>
 
       {/* The Input Section */}
-      <div className="flex items-center border border-gray-300 rounded-lg overflow-hidden bg-white shadow-sm">
+      <div className="flex justify-center items-center space-x-2 w-full bg-white shadow-sm rounded-lg p-2">
         <input
           id="tips"
           placeholder="Share Tips"
-          className="text-lg p-2 w-full border rounded-md"
+          className="text-lg p-2 w-1/2 border-r-0 rounded-l-md"
           value={tip}
           onChange={handleInputChange}
         />
         <button
-          className="bg-green-500 text-white px-6 py-2 mr-1 rounded-md hover:bg-green-600"
+          className="bg-green-500 text-white px-6 py-2 w-1/2 rounded-r-md hover:bg-green-600"
           onClick={sendTips}
-        >Send
+        >
+          Send
         </button>
       </div>
 

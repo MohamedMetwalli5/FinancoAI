@@ -6,7 +6,6 @@ import './index.css';
 import HomePage from './pages/HomePage.jsx';
 import MarketNewsPage from './pages/MarketNewsPage.jsx';
 import SettingsPage from './pages/SettingsPage.jsx';
-import AIModelsPage from './pages/AIModelsPage.jsx';
 import SignUpPage from './pages/SignUpPage.jsx';
 import SignInPage from './pages/SignInPage.jsx';
 import {DataProvider} from '../src/AppContext.jsx';
@@ -21,7 +20,6 @@ createRoot(document.getElementById('root')).render(
           <Route path="/signin" element={<SignInPage />} />
           <Route path="/dashboard" element={<HomePage />} />
           <Route path="/market-news" element={<MarketNewsPage />} />
-          <Route path="/ai-models" element={<AIModelsPage />} />
           <Route path="/settings" element={<SettingsPage />} />
         </Routes>
       </DataProvider>
