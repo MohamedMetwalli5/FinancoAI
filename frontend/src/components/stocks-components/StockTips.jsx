@@ -75,7 +75,7 @@ const StockTips = () => {
           <div key={index} className="mb-4">
             <div className="flex gap-2 items-center p-1">
               <img
-                src="/src/assets/images/PersonalPhoto.png"
+                src="./src/assets/images/PersonalPhoto.png"
                 alt="Profile Photo"
                 className="w-8 h-8 rounded-full object-cover"
               />

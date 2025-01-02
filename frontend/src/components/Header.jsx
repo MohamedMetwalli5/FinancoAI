@@ -36,7 +36,7 @@ const Header = () => {
           <div onClick={() => navigate('/settings')} className="flex items-center justify-center p-4 cursor-pointer">
             <h3 className="font-bold text-black mr-2">{name} </h3>
             <img
-              src="/src/assets/images/PersonalPhoto.png"
+              src="./src/assets/images/PersonalPhoto.png"
               alt="Profile Photo"
               className="w-10 h-10 rounded-full object-cover"
             />

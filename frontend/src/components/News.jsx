@@ -30,7 +30,7 @@ const News = () => {
             className="flex-col shadow-md rounded-lg items-center justify-center p-6 m-1 bg-purple-100 cursor-pointer min-h-[160px] flex hover:bg-purple-200 transition-all"
           >
             <img
-              src="/src/assets/images/NewsArticleBackground.png"
+              src="./src/assets/images/NewsArticleBackground.png"
               alt="Profile Photo"
               className="w-16 h-16 rounded-full object-cover mb-4"
             />
