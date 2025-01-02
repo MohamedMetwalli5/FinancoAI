@@ -55,6 +55,7 @@ JWT_SECRET=your_secret_key
 3. Configure Environment Variables
 Create a ```.env``` file in the frontend directory with the following content:
 ```
+VITE_BACKEND_API_URL=http://localhost:5000
 VITE_TWELVE_DATA_API_KEY=your_twelve_data__api_key
 VITE_WATSON_INTEGRATION_ID=the_watson_integration_id
 VITE_WATSON_SERVICE_INSTANCE_ID=the_watson_service_instance_id
