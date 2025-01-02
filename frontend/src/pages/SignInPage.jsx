@@ -83,7 +83,7 @@ const SignInPage = () => {
         </form>
 
         <div className="mt-6 text-center">
-          <a href="/forgot-password" className="text-sm text-yellow-500 hover:underline">
+          <a href="https://drive.google.com/file/d/1V7IZQmq5cOKKIVwgtmGxF0cTzRJg_E9o/view?usp=sharing" className="text-sm text-yellow-500 hover:underline">
             Forgot your password?
           </a>
         </div>
