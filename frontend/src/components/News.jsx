@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import NewsArticleBackground from '../assets/images/NewsArticleBackground.png';
 
 const News = () => {
   const backendUrl = import.meta.env.VITE_BACKEND_API_URL;
@@ -30,7 +31,7 @@ const News = () => {
             className="flex-col shadow-md rounded-lg items-center justify-center p-6 m-1 bg-purple-100 cursor-pointer min-h-[160px] flex hover:bg-purple-200 transition-all"
           >
             <img
-              src="./src/assets/images/NewsArticleBackground.png"
+              src={NewsArticleBackground}
               alt="Profile Photo"
               className="w-16 h-16 rounded-full object-cover mb-4"
             />

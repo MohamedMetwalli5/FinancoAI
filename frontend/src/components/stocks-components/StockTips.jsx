@@ -3,6 +3,7 @@ import { FaRegSquareCaretDown, FaRegSquareCaretUp } from "react-icons/fa6";
 import axios from 'axios';
 import { v4 as uuidv4 } from 'uuid';
 import DOMPurify from 'dompurify';
+import PersonalPhoto from "/src/assets/images/PersonalPhoto.png";
 import { AppContext } from '../../AppContext.jsx';
 
 const StockTips = () => {
@@ -75,7 +76,7 @@ const StockTips = () => {
           <div key={index} className="mb-4">
             <div className="flex gap-2 items-center p-1">
               <img
-                src="./src/assets/images/PersonalPhoto.png"
+                src={PersonalPhoto}
                 alt="Profile Photo"
                 className="w-8 h-8 rounded-full object-cover"
               />

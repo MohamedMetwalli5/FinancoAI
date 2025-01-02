@@ -1,5 +1,6 @@
 import Notifications from "../components/notifications/Notifications";
 import NoNotifications from "../components/notifications/NoNotifications";
+import PersonalPhoto from '../assets/images/PersonalPhoto.png';
 import Searchbar from "./header-components/Searchbar";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
@@ -36,7 +37,7 @@ const Header = () => {
           <div onClick={() => navigate('/settings')} className="flex items-center justify-center p-4 cursor-pointer">
             <h3 className="font-bold text-black mr-2">{name} </h3>
             <img
-              src="./src/assets/images/PersonalPhoto.png"
+              src={PersonalPhoto}
               alt="Profile Photo"
               className="w-10 h-10 rounded-full object-cover"
             />
