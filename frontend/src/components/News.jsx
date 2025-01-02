@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 
 const News = () => {
+  const backendUrl = import.meta.env.VITE_BACKEND_API_URL;
   const [financialNews, setFinancialNews] = useState([]);
 
   const fetchNews = async () => {
     try {
-      const response = await fetch('http://localhost:5000/news');
+      const response = await fetch(`${backendUrl}/news`);
       const data = await response.json();
       setFinancialNews(data);
     } catch (error) {

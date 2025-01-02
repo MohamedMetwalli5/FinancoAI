@@ -6,7 +6,7 @@ import DOMPurify from 'dompurify';
 import { AppContext } from '../../AppContext.jsx';
 
 const StockTips = () => {
-
+  const backendUrl = import.meta.env.VITE_BACKEND_API_URL;
   const { sharedUserEmail } = useContext(AppContext);
 
   const [TopTips, setTopTips] = useState([]);
@@ -30,7 +30,7 @@ const StockTips = () => {
 
     if (newTips.text) {
       try {
-        const response = await axios.post(`http://localhost:5000/tips`, newTips, {
+        const response = await axios.post(`${backendUrl}/tips`, newTips, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -47,7 +47,7 @@ const StockTips = () => {
 
   const fetchTopTips = async () => {
     try {
-      const response = await axios.get(`http://localhost:5000/tips/${sharedUserEmail}`, {
+      const response = await axios.get(`${backendUrl}/tips/${sharedUserEmail}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

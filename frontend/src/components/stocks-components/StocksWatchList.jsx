@@ -6,7 +6,7 @@ import { AppContext } from '../../AppContext.jsx';
 
 
 const StockData = () => {
-  
+  const backendUrl = import.meta.env.VITE_BACKEND_API_URL;
   const { sharedUserEmail } = useContext(AppContext);
     
   const mockStockData = {
@@ -55,7 +55,7 @@ const StockData = () => {
   // Fetching already user subscriptions
   const fetchSubscribedStocks = async () => {
     try {
-      const response = await axios.get(`http://localhost:5000/subscribed-stocks/${sharedUserEmail}`, {
+      const response = await axios.get(`${backendUrl}/subscribed-stocks/${sharedUserEmail}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -82,7 +82,7 @@ const StockData = () => {
         return;
       }
       // Fetching the current subscriptions from the backend
-      const { data } = await axios.get(`http://localhost:5000/subscribed-stocks/${sharedUserEmail}`, {
+      const { data } = await axios.get(`${backendUrl}/subscribed-stocks/${sharedUserEmail}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -93,7 +93,7 @@ const StockData = () => {
 
       // Sending the updated list back to the server
       const response = await axios.put(
-        `http://localhost:5000/subscribed-stocks/${sharedUserEmail}`,
+        `${backendUrl}/subscribed-stocks/${sharedUserEmail}`,
         { subscribedstocks: updatedSubscriptions }, {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -110,7 +110,7 @@ const StockData = () => {
 
   const removeSubscription = async (symbolToRemove) => {
     try {
-      const { data } = await axios.get(`http://localhost:5000/subscribed-stocks/${sharedUserEmail}`, {
+      const { data } = await axios.get(`${backendUrl}/subscribed-stocks/${sharedUserEmail}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -118,7 +118,7 @@ const StockData = () => {
       const currentSubscriptions = data.subscribedstocks || [];
       const updatedSubscriptions = currentSubscriptions.filter((item) => item !== symbolToRemove);
 
-      await axios.put(`http://localhost:5000/subscribed-stocks/${sharedUserEmail}`, 
+      await axios.put(`${backendUrl}/subscribed-stocks/${sharedUserEmail}`, 
         { subscribedstocks: updatedSubscriptions }, {
         headers: {
           Authorization: `Bearer ${token}`,

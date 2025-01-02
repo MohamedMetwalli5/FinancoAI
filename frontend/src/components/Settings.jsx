@@ -7,7 +7,7 @@ import hash from 'hash.js';
 
 
 const Settings = () => {
-
+  const backendUrl = import.meta.env.VITE_BACKEND_API_URL;
   const { sharedUserEmail } = useContext(AppContext);
   
   const [name, setName] = useState('');
@@ -34,7 +34,7 @@ const Settings = () => {
   
     if (updatedUser.name && updatedUser.passwordHash) {
       try {
-        const response = await axios.put(`http://localhost:5000/users/${sharedUserEmail}`, updatedUser, {
+        const response = await axios.put(`${backendUrl}/users/${sharedUserEmail}`, updatedUser, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -54,7 +54,7 @@ const Settings = () => {
 
   const deleteAccount = async () => {
     try {
-      const response = await axios.delete(`http://localhost:5000/users/${sharedUserEmail}`, {
+      const response = await axios.delete(`${backendUrl}/users/${sharedUserEmail}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

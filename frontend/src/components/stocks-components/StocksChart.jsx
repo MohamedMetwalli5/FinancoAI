@@ -26,7 +26,7 @@ ChartJS.register(
 
 
 const StocksChart = () => {
-
+  const backendUrl = import.meta.env.VITE_BACKEND_API_URL;
   const { sharedUserEmail } = useContext(AppContext);
 
   const [currentSubscriptions, setCurrentSubscriptions] = useState(["AAPL, AMZN, GOOGL"]);
@@ -35,7 +35,7 @@ const StocksChart = () => {
 
   const fetchSubscribedStocks = async () => {
     try {
-      const response = await axios.get(`http://localhost:5000/subscribed-stocks/${sharedUserEmail}`, {
+      const response = await axios.get(`${backendUrl}/subscribed-stocks/${sharedUserEmail}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

@@ -9,7 +9,7 @@ import hash from 'hash.js';
 
 
 const SignUpPage = () => {
-
+  const backendUrl = import.meta.env.VITE_BACKEND_API_URL;
   const { setSharedUserEmail } = useContext(AppContext);
   
   const navigate = useNavigate();
@@ -30,7 +30,7 @@ const SignUpPage = () => {
   
     if (newUser.name && newUser.email && newUser.passwordHash) {
       try {
-        const response = await axios.post("http://localhost:5000/users/signup", newUser);
+        const response = await axios.post(`${backendUrl}/users/signup`, newUser);
         const { token } = response.data;
         localStorage.setItem("authToken", token);
         console.log("User added and token stored:", response.data);

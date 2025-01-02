@@ -9,7 +9,7 @@ import { AppContext } from '../../AppContext.jsx';
 ChartJS.register(CategoryScale, BarElement, Title, Tooltip, Legend);
 
 const GroupedBarChart = () => {
-
+  const backendUrl = import.meta.env.VITE_BACKEND_API_URL;
   const { sharedUserEmail } = useContext(AppContext);
 
   const MonthAbbreviations = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
@@ -22,7 +22,7 @@ const GroupedBarChart = () => {
 
   const fetchTransactions = async () => {
     try {
-      const response = await axios.get(`http://localhost:5000/transactions/${sharedUserEmail}`,{
+      const response = await axios.get(`${backendUrl}/transactions/${sharedUserEmail}`,{
         headers: {
           Authorization: `Bearer ${token}`,
         },

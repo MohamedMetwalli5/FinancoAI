@@ -5,6 +5,7 @@ import axios from 'axios';
 
 
 const CardPopupForm = ({ isOpen, togglePopup, PopupFormTitle }) => {
+  const backendUrl = import.meta.env.VITE_BACKEND_API_URL;
   const [formData, setFormData] = useState({
     amount: '',
     description: '',
@@ -37,7 +38,7 @@ const CardPopupForm = ({ isOpen, togglePopup, PopupFormTitle }) => {
     const token = localStorage.getItem('authToken'); // Retrieving the token to be used below
   
     try {
-      const response = await axios.post('http://localhost:5000/transactions/', transaction, {
+      const response = await axios.post(`${backendUrl}/transactions/`, transaction, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

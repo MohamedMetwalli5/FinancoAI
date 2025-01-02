@@ -7,7 +7,7 @@ import { AppContext } from '../../AppContext.jsx';
 
 
 const OverviewCards =  () => {
-
+  const backendUrl = import.meta.env.VITE_BACKEND_API_URL;
   const { sharedUserEmail } = useContext(AppContext);
 
   const [isOpen, setIsOpen] = useState(false);
@@ -19,7 +19,7 @@ const OverviewCards =  () => {
   
   const fetchTransactions = async () => {
     try {
-      const response = await axios.get(`http://localhost:5000/transactions/${sharedUserEmail}`,{
+      const response = await axios.get(`${backendUrl}/transactions/${sharedUserEmail}`,{
         headers: {
           Authorization: `Bearer ${token}`,
         },

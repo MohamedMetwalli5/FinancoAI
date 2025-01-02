@@ -8,7 +8,7 @@ import hash from 'hash.js';
 
 
 const SignInPage = () => {
-
+  const backendUrl = import.meta.env.VITE_BACKEND_API_URL;
   const { setSharedUserEmail } = useContext(AppContext);
   
   const navigate = useNavigate();
@@ -26,7 +26,7 @@ const SignInPage = () => {
   
     if(user.email && user.password){
       try {
-        const response = await axios.post('http://localhost:5000/users/signin', user);
+        const response = await axios.post(`${backendUrl}/users/signin`, user);
         console.log('signedin successfully!');
 
         const { token } = response.data;
