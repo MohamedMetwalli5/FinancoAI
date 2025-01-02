@@ -18,7 +18,7 @@ startHeartbeat(); // Starting the heartbeat process
 
 const app = express();
 app.use(express.json());
-app.use(cors({ origin: "http://localhost:5173" })); // The frontend URL
+app.use(cors({ origin: process.env.FRONTEND_URL })); // The frontend URL
 
 
 app.use("/users", userRoutes);
