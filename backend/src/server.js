@@ -2,7 +2,7 @@ import dotenv from "dotenv";
 dotenv.config();
 import express from "express";
 import cors from "cors";
-import db from "./config/db.js";
+import { db, startHeartbeat } from "./config/db.js";
 
 import userRoutes from "./routes/userRoutes.js";
 import trasactionRoutes from "./routes/transactionRoutes.js";
@@ -13,7 +13,8 @@ import marketNewsRouter from "./routes/marketNewsRoutes.js";
 
 const port = process.env.PORT || 5001;
 
-db();
+db(); // Initializing the MongoDB connection
+startHeartbeat(); // Starting the heartbeat process
 
 const app = express();
 app.use(express.json());
