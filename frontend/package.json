@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-  "start": "serve --single --listen 5173 dist",
+  "start": "serve --single --listen 5173 ./dist",
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
