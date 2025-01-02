@@ -23,14 +23,15 @@ FinancoAI is a smart financial assistant that combines real-time stock tracking 
 - **Real-Time Updates**: Fetch and display real-time stock data.
 - **Investment Recommendations**: Discover tailored investment opportunities to suit your financial situation.
 - **Budgeting Assistance**: Optimize your finances with AI-powered budgeting tips and insights.
-- **Interactive Chat Interface**: Engage with FinancoAI through an intuitive, user-friendly chat interface.
+- **Interactive Chat Interface**: Engage with FinancoAI through an intuitive, IBM WatsonX-powered user-friendly chat interface for personalized interactions.
 - **Community Tip Sharing**: Share and receive valuable financial tips. Collaborate on investment, budgeting, and financial strategies with other users.
+- **Hosting & Database**: The frontend is hosted on Netlify, the backend runs on Railway, and the database is powered by MongoDB Cloud. Feel free to explore the platform by visiting the website [here](https://financoai.netlify.app/).
 
 
 ---
 
 # Setup Instructions
-
+If you want to replicate the project on your local environment, follow these steps:
 ## Backend Setup
 1. Navigate to the Backend Directory
 ```cd backend```
@@ -60,6 +61,7 @@ VITE_BACKEND_API_URL=http://localhost:5000
 VITE_TWELVE_DATA_API_KEY=your_twelve_data__api_key
 VITE_WATSON_INTEGRATION_ID=the_watson_integration_id
 VITE_WATSON_SERVICE_INSTANCE_ID=the_watson_service_instance_id
+PORT=5173
 ```
 4. Start the Frontend
 ``` npm run dev ```
