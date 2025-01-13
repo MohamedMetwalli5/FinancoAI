@@ -25,7 +25,7 @@ const CardPopupForm = ({ isOpen, togglePopup, PopupFormTitle }) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-  
+    
     const transaction = {
       id: uuidv4(),
       category: formData.category,
@@ -34,9 +34,22 @@ const CardPopupForm = ({ isOpen, togglePopup, PopupFormTitle }) => {
       date: formData.date,
       recurring: formData.recurring,
     };
-  
+    
     const token = localStorage.getItem('authToken'); // Retrieving the token to be used below
+
+    const selectedDate = new Date(formData.date); // Converting the date string to a Date object
+    const today = new Date(); // Getting the current date
   
+    // Resetting the time portion of both dates for accurate comparison
+    selectedDate.setHours(0, 0, 0, 0);
+    today.setHours(0, 0, 0, 0);
+  
+    // Validating that the selected date is not in the future
+    if (selectedDate > today) {
+      alert("Please select a date that isn't in the future.");
+      return;
+    }
+    
     try {
       const response = await axios.post(`${backendUrl}/transactions/`, transaction, {
         headers: {
@@ -49,7 +62,7 @@ const CardPopupForm = ({ isOpen, togglePopup, PopupFormTitle }) => {
     }
   
     togglePopup();
-  };  
+  };
   
   
 
