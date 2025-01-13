@@ -73,7 +73,7 @@ const OverviewCards =  () => {
   ];
 
   return (
-    <div className="flex-1 mt-4 p-1">
+    <div className="flex-1 mt-4 p-1 w-full md:w-fit">
       <h1 className="font-bold text-lg mb-2">Overview</h1>
       
       {isOpen && <CardPopupForm isOpen={isOpen} togglePopup={togglePopup} PopupFormTitle={PopupFormTitle} />}
