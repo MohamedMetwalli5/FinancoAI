@@ -5,6 +5,8 @@ import { useNavigate } from 'react-router-dom';
 import { AppContext } from '../AppContext.jsx';
 import { useContext } from 'react';
 import hash from 'hash.js';
+import RightCharacterSticker from "../assets/images/RightCharacterSticker.svg";
+import LeftCharacterSticker from "../assets/images/LeftCharacterSticker.svg";
 
 
 
@@ -58,9 +60,16 @@ const SignUpPage = () => {
       console.log("Please fill in all fields.");
     }
   };
-  
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-purple-50 via-white to-purple-100">
+    <div className="min-h-screen flex items-center justify-evenly bg-gradient-to-r from-purple-50 via-white to-purple-100 relative">
+      {/* The Left Sticker */}
+      <img
+        src={LeftCharacterSticker}
+        alt=""
+        className="w-0 h-0 md:w-52 md:h-52"
+      />
+
       <div className="max-w-md w-full bg-white shadow-lg rounded-lg p-8">
         <h2 className="text-3xl font-bold text-purple-600 text-center">Create Your Account</h2>
         <p className="text-gray-500 text-center mt-2">
@@ -116,13 +125,13 @@ const SignUpPage = () => {
             />
           </div>
 
-          <div className='my-3 flex items-center'>
+          <div className="my-3 flex items-center">
             <input 
               type="checkbox" 
               checked={areAgreementsChecked} 
               onChange={handleCheckboxChange} 
             />
-            <label className='ml-3'>
+            <label className="ml-3">
               I agree to the <a href={termsOfUseURL} className="text-purple-600 hover:underline">terms of use</a> and <a href={privacyPolicyURL} className="text-purple-600 hover:underline">privacy policy</a>
             </label>
           </div>
@@ -141,8 +150,16 @@ const SignUpPage = () => {
           </p>
         </div>
       </div>
-    </div>
-  )
-}
 
-export default SignUpPage
+      {/* The Right Sticker */}
+      <img
+        src={RightCharacterSticker}
+        alt=""
+        className="w-0 h-0 md:w-52 md:h-52"
+      />
+
+    </div>
+  );
+};
+
+export default SignUpPage;
