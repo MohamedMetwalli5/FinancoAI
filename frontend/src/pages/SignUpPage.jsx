@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import { v4 as uuidv4 } from 'uuid';
 import { useNavigate } from 'react-router-dom';
@@ -11,11 +11,21 @@ import hash from 'hash.js';
 const SignUpPage = () => {
   const backendUrl = import.meta.env.VITE_BACKEND_API_URL;
   const { setSharedUserEmail } = useContext(AppContext);
-  
+  const [areAgreementsChecked, setAreAgreementsChecked] = useState(false);
+  const termsOfUseURL = "https://docs.google.com/document/d/1fJhJVNTQttQmb1X5EU139NY-5B16NJdBAh05l320_24/edit?usp=sharing";
+  const privacyPolicyURL = "https://docs.google.com/document/d/1-Hzwkoy_fjP1v0tkilZEsOdSlkaumEpBJckR2P0iydI/edit?usp=sharing";
+
   const navigate = useNavigate();
+
+  const handleCheckboxChange = () => {
+    setAreAgreementsChecked(!areAgreementsChecked);
+  };
 
   const addUser = async (event) => {
     event.preventDefault();
+    const unHashedPassword = document.getElementById("password").value;
+    const unHashedPasswordConfirmation = document.getElementById("confirm-password").value;
+
     const passwordHash = hash.sha256().update(document.getElementById("password").value).digest('hex');
     const newUser = {
       id: uuidv4(),
@@ -27,8 +37,12 @@ const SignUpPage = () => {
         emailNotifications: false,
       },
     };
-  
-    if (newUser.name && newUser.email && newUser.passwordHash) {
+
+    if (!areAgreementsChecked) {
+      alert("You must agree to the terms of use and privacy policy.");
+    } else if (unHashedPassword !== unHashedPasswordConfirmation) {
+      alert("Password and confirmation do not match.");
+    } else if (newUser.name && newUser.email && newUser.passwordHash && areAgreementsChecked) {
       try {
         const response = await axios.post(`${backendUrl}/users/signup`, newUser);
         const { token } = response.data;
@@ -100,6 +114,17 @@ const SignUpPage = () => {
               className="mt-1 block w-full px-4 py-2 border border-purple-300 rounded-lg bg-purple-50 focus:outline-none focus:ring-2 focus:ring-purple-400"
               placeholder="••••••••"
             />
+          </div>
+
+          <div className='my-3 flex items-center'>
+            <input 
+              type="checkbox" 
+              checked={areAgreementsChecked} 
+              onChange={handleCheckboxChange} 
+            />
+            <label className='ml-3'>
+              I agree to the <a href={termsOfUseURL} className="text-purple-600 hover:underline">terms of use</a> and <a href={privacyPolicyURL} className="text-purple-600 hover:underline">privacy policy</a>
+            </label>
           </div>
 
           <button type="submit" className="w-full py-2 px-4 bg-purple-600 text-white font-semibold rounded-lg hover:bg-purple-700 transition duration-200">
