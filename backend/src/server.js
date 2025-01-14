@@ -28,6 +28,11 @@ app.use("/subscribed-stocks", subscribedStocksRoutes);
 app.use("/news", marketNewsRouter);
 
 
-app.listen(port, () => {
-    console.log(`Server is running on port ${port}`)
-});
+// Starting the server only if it isn't in a test environment
+if (process.env.NODE_ENV !== "test") {
+    app.listen(port, () => {
+        console.log(`Server is running on port ${port}`);
+    });
+}
+
+export default app; // Exporting the app for testing

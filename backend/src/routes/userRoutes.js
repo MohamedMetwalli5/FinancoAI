@@ -47,6 +47,9 @@ router.put("/:email", authenticateToken, async (req, res) => {
   try {
     const { email } = req.params;
     const { name, passwordHash, timezone, emailNotifications } = req.body;
+    if(!name || !passwordHash){
+      return res.status(400).send({ error:"Invalid input data"});
+    }
 
     const updatedUser = await User.findOneAndUpdate(
       { email },
@@ -104,13 +107,18 @@ router.delete("/:email", authenticateToken, async (req, res) => {
 
     res.status(200).send("User is Deleted Successfully");
   } catch (error) {
-    res.status(400).send({ error: error.message });
+    res.status(400).send({ error: "Failed to delete user" });
   }
 });
 
 
 // To signup a new (unique) user in the "Signup" page
 router.post("/signup", async (req, res) => {
+    const { name, passwordHash } = req.body;
+    if(!name || !passwordHash){
+      return res.status(400).send({ error:"Invalid input data"});
+    }
+
     try {
         const newUser = await User.create(req.body);
         const token = generateToken(newUser);
