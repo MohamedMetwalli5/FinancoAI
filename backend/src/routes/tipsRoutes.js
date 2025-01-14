@@ -10,6 +10,11 @@ router.use(authenticateToken);
 
 // To add a new tips from the user in the "Dashboard" page
 router.post("/", async (req, res) => {
+    // Validation of the required fields
+    const { email, text } = req.body;
+    if (!email || !text) {
+        return res.status(400).send({ error: "Email and text are required." });
+    }
     try {
       const data = {
         ...req.body,
