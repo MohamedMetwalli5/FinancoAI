@@ -46,8 +46,8 @@ JWT_SECRET=your_secret_key
 ```
 4. Run the Backend
 ``` npm run dev ```
-The backend will start on http://localhost:5000
-5. Run the Backend Jest Unit Tests (optional, in a new terminal)
+5. The backend will start on http://localhost:5000
+6. Run the Backend Jest Unit Tests (optional, in a new terminal)
 ``` npm test ```
 
 
@@ -67,7 +67,7 @@ PORT=5173
 ```
 4. Start the Frontend
 ``` npm run dev ```
-The frontend will start on http://localhost:5173
+5. The frontend will start on http://localhost:5173
 
 
 ---
