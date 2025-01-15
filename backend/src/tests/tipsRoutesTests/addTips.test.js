@@ -1,7 +1,7 @@
 import request from "supertest";
 import app from "../../server.js";
 import Tips from "../../models/tips.js";
-import { v4 as uuidv4 } from 'uuid';
+
 
 jest.mock("../../models/tips.js");
 
