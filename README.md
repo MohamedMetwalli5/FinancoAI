@@ -56,7 +56,7 @@ JWT_SECRET=your_secret_key
 ``` cd frontend ```
 2. Install Dependencies
 ``` npm install ```
-3. Configure Environment Variables
+3. Configure Environment Variables, 
 Create a ```.env``` file in the frontend directory with the following content:
 ```
 VITE_BACKEND_API_URL=http://localhost:5000
