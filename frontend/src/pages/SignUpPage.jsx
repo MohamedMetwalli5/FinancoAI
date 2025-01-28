@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { AppContext } from '../AppContext.jsx';
 import { useContext } from 'react';
 import hash from 'hash.js';
+import DOMPurify from 'dompurify';
 import RightCharacterSticker from "../assets/images/RightCharacterSticker.svg";
 import LeftCharacterSticker from "../assets/images/LeftCharacterSticker.svg";
 
@@ -31,8 +32,8 @@ const SignUpPage = () => {
     const passwordHash = hash.sha256().update(document.getElementById("password").value).digest('hex');
     const newUser = {
       id: uuidv4(),
-      name: document.getElementById("name").value,
-      email: document.getElementById("email").value,
+      name: DOMPurify.sanitize(document.getElementById("name").value),
+      email: DOMPurify.sanitize(document.getElementById("email").value),
       passwordHash,
       preferences: {
         timezone: "UTC",
@@ -42,6 +43,8 @@ const SignUpPage = () => {
 
     if (!areAgreementsChecked) {
       alert("You must agree to the terms of use and privacy policy.");
+    } else if (unHashedPassword.length < 8) {
+      alert("Password must be at least 8 characters long!");
     } else if (unHashedPassword !== unHashedPasswordConfirmation) {
       alert("Password and confirmation do not match.");
     } else if (newUser.name && newUser.email && newUser.passwordHash && areAgreementsChecked) {

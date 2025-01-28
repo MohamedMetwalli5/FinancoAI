@@ -1,9 +1,18 @@
 import { Command } from "cmdk";
 import React, { useState } from "react";
 import { FaPlus, FaRegEnvelope } from "react-icons/fa6";
+import DOMPurify from 'dompurify';
+
+
 
 export const CommandMenu = ({ open, setOpen }) => {
   const [value, setValue] = useState("");
+
+  const handleInputChange = (newValue) => {
+    const sanitizedValue = DOMPurify.sanitize(newValue);
+    setValue(sanitizedValue);
+  };
+
   React.useEffect(() => {
     const down = (e) => {
       if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
@@ -21,7 +30,7 @@ export const CommandMenu = ({ open, setOpen }) => {
       <div onClick={(e) => {e.stopPropagation()}} className="bg-white w-full overflow-hidden shadow-xl max-w-lg m-auto mx-auto mt-20 border-stone-400 rounded-md">
       <Command.Input 
         value={value}
-        onValueChange={setValue}
+        onValueChange={handleInputChange}
         className="w-full text-black p-2" placeholder="What do you need?"
       />
       <Command.List>

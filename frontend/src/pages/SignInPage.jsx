@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 import { AppContext } from '../AppContext.jsx';
 import hash from 'hash.js';
+import DOMPurify from 'dompurify';
 
 
 
@@ -20,7 +21,7 @@ const SignInPage = () => {
     const passwordHash = hash.sha256().update(document.getElementById("password").value).digest('hex');
 
     const user = {
-      email: document.getElementById("email").value,
+      email: DOMPurify.sanitize(document.getElementById("email").value),
       password: passwordHash
     };
   

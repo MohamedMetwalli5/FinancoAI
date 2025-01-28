@@ -6,6 +6,7 @@ import DOMPurify from 'dompurify';
 import PersonalPhoto from "/src/assets/images/PersonalPhoto.png";
 import { AppContext } from '../../AppContext.jsx';
 
+
 const StockTips = () => {
   const backendUrl = import.meta.env.VITE_BACKEND_API_URL;
   const { sharedUserEmail } = useContext(AppContext);

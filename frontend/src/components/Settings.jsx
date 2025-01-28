@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { AppContext } from '../AppContext.jsx';
 import hash from 'hash.js';
+import DOMPurify from 'dompurify';
 
 
 
@@ -23,9 +24,10 @@ const Settings = () => {
 
   const save = async (event) => {
     event.preventDefault();
+    const sanitizedUserName = DOMPurify.sanitize(name);
     const passwordHash = hash.sha256().update(document.getElementById("password").value).digest('hex');
     const updatedUser = {
-      name,
+      name: sanitizedUserName,
       passwordHash,
       timezone,
       emailNotifications,
