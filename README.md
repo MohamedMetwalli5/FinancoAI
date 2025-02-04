@@ -25,6 +25,7 @@ FinancoAI is a smart financial assistant that combines real-time stock tracking 
 - **Budgeting Assistance**: Optimize your finances with AI-powered budgeting tips and insights.
 - **Interactive Chat Interface**: Engage with FinancoAI through an intuitive, IBM WatsonX-powered user-friendly chat interface for personalized interactions.
 - **Community Tip Sharing**: Share and receive valuable financial tips. Collaborate on investment, budgeting, and financial strategies with other users.
+- **Security Measures**: Restrict signin and signup requests per IP to prevent abuse, ensure fair usage, protect against DDoS attacks, and use JWT authentication for secure user verification.
 - **Hosting & Database**: The frontend is hosted on Netlify, the backend runs on Railway, and the database is powered by MongoDB Cloud. Feel free to explore the platform by visiting the website [here](https://financoai.netlify.app/).
 
 

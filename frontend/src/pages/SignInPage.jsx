@@ -36,7 +36,11 @@ const SignInPage = () => {
         setSharedUserEmail(user.email);
         navigate('/dashboard');
       } catch (error) {
-        console.error('Error signing in user:', error);
+        if (error.response && error.response.status === 429) {
+          alert('You have made too many requests. Please try again later.');
+        } else {
+          console.error('Error signing in user:', error);          
+        }
       }
     }else {
       console.log('Please fill in all fields.');

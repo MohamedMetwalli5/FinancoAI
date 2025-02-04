@@ -20,7 +20,6 @@ const app = express();
 app.use(express.json());
 app.use(cors({ origin: process.env.FRONTEND_URL })); // The frontend URL
 
-
 app.use("/users", userRoutes);
 app.use("/transactions", trasactionRoutes);
 app.use("/tips", tipsRoutes);

@@ -9,13 +9,16 @@ import authenticateToken from "../middlewares/authMiddleware.js";
 import generateToken from "../utils/tokenUtils.js";
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
+import RateLimiter from "../middlewares/rateLimiterMiddleware.js";
 
 
 const router = express.Router();
 
+const authLimiter = new RateLimiter(50, 15 * 60 * 1000).getMiddleware(); // 50 requests per 15 min, rate limit for the same IP
+
 
 // To get the user data info in the "signin" page
-router.post("/signin", async (req, res) => {
+router.post("/signin", authLimiter, async (req, res) => {
   const { email, password } = req.body;
   try {
     const user = await User.findOne({ email });
@@ -113,7 +116,7 @@ router.delete("/:email", authenticateToken, async (req, res) => {
 
 
 // To signup a new (unique) user in the "Signup" page
-router.post("/signup", async (req, res) => {
+router.post("/signup", authLimiter, async (req, res) => {
     const { name, passwordHash } = req.body;
     if(!name || !passwordHash){
       return res.status(400).send({ error:"Invalid input data"});

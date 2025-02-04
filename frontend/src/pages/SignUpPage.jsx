@@ -57,7 +57,11 @@ const SignUpPage = () => {
         setSharedUserEmail(newUser.email);
         navigate("/dashboard");
       } catch (error) {
-        console.error("Error adding user:", error.response?.data || error.message);
+        if (error.response && error.response.status === 429) {
+          alert('You have made too many requests. Please try again later.');
+        } else {
+          console.error("Error adding user:", error.response?.data || error.message);        
+        }
       }
     } else {
       console.log("Please fill in all fields.");
