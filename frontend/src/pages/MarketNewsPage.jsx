@@ -2,10 +2,17 @@ import React from 'react'
 import Sidebar from '../components/Sidebar'
 import Header from '../components/Header'
 import News from '../components/News'
-
+import { useContext } from "react";
+import { AppContext } from '../AppContext.jsx';
 
 
 const MarketNews = () => {
+  
+  const { sharedUserEmail } = useContext(AppContext);
+  
+  if(!sharedUserEmail){
+    return <></>
+  }
 
   return (
     <>

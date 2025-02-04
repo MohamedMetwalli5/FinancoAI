@@ -1,9 +1,18 @@
 import Dashboard from '../components/Dashboard';
 import Sidebar from '../components/Sidebar'
 import Header from '../components/Header';
+import { useContext } from "react";
+import { AppContext } from '../AppContext.jsx';
 
 
 const Home = () => {
+
+  const { sharedUserEmail } = useContext(AppContext);
+  
+  if(!sharedUserEmail){
+    return <></>
+  }
+
   return (
     <div className="flex h-screen">
       <Sidebar/>
