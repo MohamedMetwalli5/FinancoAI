@@ -55,13 +55,25 @@ router.get("/SpotifySignin", async (req, res) => {
             });
         }
 
+        // Fetching the top 3 finance podcasts
+        const podcastResponse = await axios.get(`https://api.spotify.com/v1/search`, {
+            headers: { Authorization: `Bearer ${access_token}` },
+            params: {
+                q: 'finance',  // the search keyword
+                type: 'show',  // looking for shows/podcasts
+                limit: 3,
+            }
+        });
+
+        const topPodcasts = podcastResponse.data.shows.items;
+
         const token = jwt.sign({ userId: user._id, email: user.email }, process.env.JWT_SECRET, {
             expiresIn: "1h",
         });
 
-        // Redirecting to frontend with the token and the email
+        // Redirecting to frontend with the token, user info, and podcasts
         res.redirect(
-            `${process.env.FRONTEND_URL}/dashboard?token=${token}&email=${encodeURIComponent(user.email)}&name=${encodeURIComponent(user.name)}`
+            `${process.env.FRONTEND_URL}/dashboard?token=${token}&email=${encodeURIComponent(user.email)}&name=${encodeURIComponent(user.name)}&podcasts=${JSON.stringify(topPodcasts)}`
         );
 
     } catch (err) {

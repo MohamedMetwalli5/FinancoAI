@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import NewsArticleBackground from '../assets/images/NewsArticleBackground.png';
+import NewsArticleBackground from '../../assets/images/NewsArticleBackground.png';
 
 const News = () => {
   const backendUrl = import.meta.env.VITE_BACKEND_API_URL;

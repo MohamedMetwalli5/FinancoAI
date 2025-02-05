@@ -1,14 +1,15 @@
 import React from 'react'
 import Sidebar from '../components/Sidebar'
 import Header from '../components/Header'
-import News from '../components/News'
+import News from '../components/market-news-components/News.jsx'
+import PodcastsBanner from '../components/market-news-components/PodcastsBanner.jsx'
 import { useContext } from "react";
 import { AppContext } from '../AppContext.jsx';
 
 
 const MarketNews = () => {
   
-  const { sharedUserEmail } = useContext(AppContext);
+  const { sharedUserEmail, spotifyPodcasts } = useContext(AppContext);
   
   if(!sharedUserEmail){
     return <></>
@@ -22,6 +23,7 @@ const MarketNews = () => {
           <div>
             <Header/>
           </div>
+          {spotifyPodcasts.length > 0 ? <PodcastsBanner /> : <></>}
           <div className='bg-slate-100 rounded-lg'>
             <News/>
           </div>         

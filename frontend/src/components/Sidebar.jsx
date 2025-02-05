@@ -89,6 +89,7 @@ const SideBar = () => {
               localStorage.removeItem('sharedUserEmail');
               localStorage.removeItem('sharedUserName');
               localStorage.removeItem('signedinWithSpotify');
+              localStorage.removeItem('spotifyPodcasts');
               navigate('/signin');
             }}
             className="flex items-center justify-start w-full p-3 mb-2 rounded-lg bg-gray-100 hover:bg-red-200 transition-all"

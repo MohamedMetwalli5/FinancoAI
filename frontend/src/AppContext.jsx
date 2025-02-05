@@ -18,6 +18,12 @@ const DataProvider = ({ children }) => {
     const [signedinWithSpotify, setSignedinWithSpotify] = useState(() => {
         return localStorage.getItem('signedinWithSpotify') || false;
     });
+
+    // Retrieving the initial value from local storage or set it to an empty array
+    const [spotifyPodcasts, setSpotifyPodcasts] = useState(() => {
+        const storedPodcasts = localStorage.getItem('spotifyPodcasts');
+        return storedPodcasts ? JSON.parse(storedPodcasts) : [];
+    });
     
 
     // Updating the local storage whenever the sharedUserEmail state changes
@@ -35,9 +41,14 @@ const DataProvider = ({ children }) => {
         localStorage.setItem('signedinWithSpotify', signedinWithSpotify);
     }, [signedinWithSpotify]);
 
+    // Updating the local storage whenever the spotifyPodcasts state changes
+    useEffect(() => {
+        localStorage.setItem('spotifyPodcasts', JSON.stringify(spotifyPodcasts));
+    }, [spotifyPodcasts]);
+
     
     return (
-        <AppContext.Provider value={{ sharedUserEmail, setSharedUserEmail, sharedUserName, setSharedUserName, signedinWithSpotify, setSignedinWithSpotify }}>
+        <AppContext.Provider value={{ sharedUserEmail, setSharedUserEmail, sharedUserName, setSharedUserName, signedinWithSpotify, setSignedinWithSpotify, spotifyPodcasts, setSpotifyPodcasts }}>
             {children}
         </AppContext.Provider>
     );

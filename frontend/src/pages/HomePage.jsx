@@ -9,7 +9,7 @@ import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
 
-  const { sharedUserEmail, setSharedUserEmail, setSharedUserName , setSignedinWithSpotify} = useContext(AppContext);
+  const { sharedUserEmail, setSharedUserEmail, setSharedUserName , setSignedinWithSpotify, setSpotifyPodcasts } = useContext(AppContext);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -17,6 +17,12 @@ const Home = () => {
     const token = queryParams.get('token');
     const email = queryParams.get('email');
     const name = queryParams.get('name');
+    const podcasts = JSON.parse(queryParams.get('podcasts'));
+
+    if(podcasts){
+      console.log(podcasts);
+      setSpotifyPodcasts(podcasts);
+    }
 
     if (token && email && name) {
       localStorage.setItem('authToken', token);
