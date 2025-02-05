@@ -11,7 +11,7 @@ const PodcastsBanner = () => {
             {spotifyPodcasts.map((podcast, index) => (
                 <div key={index} className="flex-1 border-r last:border-0 border-gray-300 mx-2">
                     <a
-                        href={podcast.external_urls.spotify}
+                        href={podcast.externalUrl}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-white text-lg font-bold hover:underline"

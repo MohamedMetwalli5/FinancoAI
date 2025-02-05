@@ -67,13 +67,18 @@ router.get("/SpotifySignin", async (req, res) => {
 
         const topPodcasts = podcastResponse.data.shows.items;
 
+        const topPodcastsWithSpecificParameters = topPodcasts.map(podcast => ({
+            name: podcast.name,
+            externalUrl: podcast.external_urls?.spotify
+        }));
+
         const token = jwt.sign({ userId: user._id, email: user.email }, process.env.JWT_SECRET, {
             expiresIn: "1h",
         });
 
         // Redirecting to frontend with the token, user info, and podcasts
         res.redirect(
-            `${process.env.FRONTEND_URL}/dashboard?token=${token}&email=${encodeURIComponent(user.email)}&name=${encodeURIComponent(user.name)}&podcasts=${JSON.stringify(topPodcasts)}`
+            `${process.env.FRONTEND_URL}/dashboard?token=${token}&email=${encodeURIComponent(user.email)}&name=${encodeURIComponent(user.name)}&podcasts=${JSON.stringify(topPodcastsWithSpecificParameters)}`
         );
 
     } catch (err) {
