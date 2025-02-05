@@ -19,7 +19,7 @@ FinancoAI is a smart financial assistant that combines real-time stock tracking 
 # Features
 
 - **Stock Subscriptions**: Subscribe to preferred stocks and track them on a personalized dashboard.
-- **OAuth2 Authentication**: Allow users to optionally sign in effortlessly with their Spotify account.
+- **OAuth2 Authentication**: Allow users to sign in effortlessly with their Spotify account, optionally, and provide them with a bonus feature that displays the top finance podcasts.
 - **Personalized Financial Insights**: AI-powered predictions about your financial future based on personal data.
 - **Real-Time Updates**: Fetch and display real-time stock data.
 - **Investment Recommendations**: Discover tailored investment opportunities to suit your financial situation.
