@@ -19,6 +19,7 @@ FinancoAI is a smart financial assistant that combines real-time stock tracking 
 # Features
 
 - **Stock Subscriptions**: Subscribe to preferred stocks and track them on a personalized dashboard.
+- **OAuth2 Authentication**: Allow users to optionally sign in effortlessly with their Spotify account.
 - **Personalized Financial Insights**: AI-powered predictions about your financial future based on personal data.
 - **Real-Time Updates**: Fetch and display real-time stock data.
 - **Investment Recommendations**: Discover tailored investment opportunities to suit your financial situation.
@@ -38,12 +39,16 @@ If you want to replicate the project on your local environment, follow these ste
 ```cd backend```
 2. Install Dependencies
 ``` npm install ```
-3. After installing MongoDB and setting up the connection, configure the database URI by creating a ```.env``` file in the backend directory with the following content:
+3. After installing MongoDB and setting up the connection, configure the database URI by creating a ```.env``` file in the backend directory with the following content:  
+Note: Some values can be obtained from the Spotify Developer Portal based on your application’s configuration and API keys.
 ```
 PORT=5000
 FRONTEND_URL=http://localhost:5173
 MONGODB_URL=your_mongodb_connection_string
 JWT_SECRET=your_secret_key
+SPOTIFY_CLIENT_ID=your_spotify_client_id
+SPOTIFY_CLIENT_SECRET=your_spotify_client_secret
+SPOTIFY_REDIRECT_URI=your_spotify_redirect_uri (e.g. http://localhost:5000/OAuth2/SpotifySignin)
 ```
 4. Run the Backend
 ``` npm run dev ```
@@ -58,13 +63,15 @@ JWT_SECRET=your_secret_key
 2. Install Dependencies
 ``` npm install ```
 3. Configure Environment Variables, 
-Create a ```.env``` file in the frontend directory with the following content:
+Create a ```.env``` file in the frontend directory with the following content:  
+Note: Some values can be obtained from the Spotify Developer Portal based on your application’s configuration and API keys.
 ```
 VITE_BACKEND_API_URL=http://localhost:5000
 VITE_TWELVE_DATA_API_KEY=your_twelve_data__api_key
 VITE_WATSON_INTEGRATION_ID=the_watson_integration_id
 VITE_WATSON_SERVICE_INSTANCE_ID=the_watson_service_instance_id
 PORT=5173
+VITE_SPOTIFY_CLIENT_ID=your_spotify_client_id
 ```
 4. Start the Frontend
 ``` npm run dev ```

@@ -4,12 +4,13 @@ import axios from 'axios';
 import { AppContext } from '../AppContext.jsx';
 import hash from 'hash.js';
 import DOMPurify from 'dompurify';
+import { v4 as uuidv4 } from "uuid";
 
 
 
 const Settings = () => {
   const backendUrl = import.meta.env.VITE_BACKEND_API_URL;
-  const { sharedUserEmail } = useContext(AppContext);
+  const { sharedUserEmail, sharedUserName, signedinWithSpotify } = useContext(AppContext);
   
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
@@ -24,8 +25,8 @@ const Settings = () => {
 
   const save = async (event) => {
     event.preventDefault();
-    const sanitizedUserName = DOMPurify.sanitize(name);
-    const passwordHash = hash.sha256().update(document.getElementById("password").value).digest('hex');
+    const sanitizedUserName = signedinWithSpotify? sharedUserName : DOMPurify.sanitize(name);
+    const passwordHash = signedinWithSpotify? "SignedinWithSpotify"+uuidv4() : hash.sha256().update(document.getElementById("password").value).digest('hex');
     const updatedUser = {
       name: sanitizedUserName,
       passwordHash,
@@ -79,29 +80,33 @@ const Settings = () => {
       className={`flex flex-col p-6 max-w-lg mx-auto ${isDarkMode ? 'bg-gray-800 text-white' : 'bg-white text-gray-800'}`}
     >
       <h2 className="text-2xl font-semibold mb-4">Profile Settings</h2>
+      
+      {!signedinWithSpotify && 
+        <>
+        <div className="flex items-center gap-3 mb-4">
+          <label htmlFor="username" className="w-24">User Name</label>
+          <input
+            id="username"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            className="rounded-md p-2 w-full bg-slate-100 dark:bg-gray-700 dark:text-white"
+            placeholder="Enter your new username"
+          />
+        </div>
 
-      <div className="flex items-center gap-3 mb-4">
-        <label htmlFor="username" className="w-24">User Name</label>
-        <input
-          id="username"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          className="rounded-md p-2 w-full bg-slate-100 dark:bg-gray-700 dark:text-white"
-          placeholder="Enter your new username"
-        />
-      </div>
-
-      <div className="flex items-center gap-3 mb-4">
-        <label htmlFor="password" className="w-24">Password</label>
-        <input
-          id="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          type="password"
-          className="rounded-md p-2 w-full bg-slate-100 dark:bg-gray-700 dark:text-white"
-          placeholder="Enter your new password"
-        />
-      </div>
+        <div className="flex items-center gap-3 mb-4">
+          <label htmlFor="password" className="w-24">Password</label>
+          <input
+            id="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            type="password"
+            className="rounded-md p-2 w-full bg-slate-100 dark:bg-gray-700 dark:text-white"
+            placeholder="Enter your new password"
+          />
+        </div>
+        </>
+      }
 
       <div className="flex items-center gap-3 mb-4">
         <label htmlFor="timezone" className="w-24">Timezone</label>

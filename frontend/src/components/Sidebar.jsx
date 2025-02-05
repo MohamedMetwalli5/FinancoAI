@@ -87,6 +87,8 @@ const SideBar = () => {
             onClick={() => {
               localStorage.removeItem('authToken');
               localStorage.removeItem('sharedUserEmail');
+              localStorage.removeItem('sharedUserName');
+              localStorage.removeItem('signedinWithSpotify');
               navigate('/signin');
             }}
             className="flex items-center justify-start w-full p-3 mb-2 rounded-lg bg-gray-100 hover:bg-red-200 transition-all"

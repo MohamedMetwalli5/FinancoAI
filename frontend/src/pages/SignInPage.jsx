@@ -5,11 +5,16 @@ import { useContext } from 'react';
 import { AppContext } from '../AppContext.jsx';
 import hash from 'hash.js';
 import DOMPurify from 'dompurify';
+import SignInWithSpotify from '../components/SigninWithSpotify.jsx';
 
 
 
 const SignInPage = () => {
+
   const backendUrl = import.meta.env.VITE_BACKEND_API_URL;
+  const termsOfUseURL = "https://docs.google.com/document/d/1fJhJVNTQttQmb1X5EU139NY-5B16NJdBAh05l320_24/edit?usp=sharing";
+  const privacyPolicyURL = "https://docs.google.com/document/d/1-Hzwkoy_fjP1v0tkilZEsOdSlkaumEpBJckR2P0iydI/edit?usp=sharing";
+
   const { setSharedUserEmail } = useContext(AppContext);
   
   const navigate = useNavigate();
@@ -86,6 +91,8 @@ const SignInPage = () => {
             Sign In
           </button>
         </form>
+        
+        <SignInWithSpotify />
 
         <div className="mt-6 text-center">
           <a href="https://drive.google.com/file/d/1V7IZQmq5cOKKIVwgtmGxF0cTzRJg_E9o/view?usp=sharing" className="text-sm text-yellow-500 hover:underline">
@@ -93,7 +100,7 @@ const SignInPage = () => {
           </a>
         </div>
 
-        <div className="mt-6 text-center">
+        <div className="mt-2 text-center">
           <p className="text-gray-600">
             Don't have an account?{' '}
             <a href="/" className="text-yellow-500 font-medium hover:underline">
@@ -101,6 +108,11 @@ const SignInPage = () => {
             </a>
           </p>
         </div>
+
+        <div className="mt-6 text-center text-sm text-gray-500">
+          By signing in, you agree to our <a href={termsOfUseURL} className="text-purple-600 hover:underline">terms of use</a> and <a href={privacyPolicyURL} className="text-purple-600 hover:underline">privacy policy</a>
+        </div>
+        
       </div>
     </div>
   )

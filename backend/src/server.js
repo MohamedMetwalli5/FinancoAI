@@ -9,6 +9,7 @@ import trasactionRoutes from "./routes/transactionRoutes.js";
 import tipsRoutes from "./routes/tipsRoutes.js";
 import subscribedStocksRoutes from "./routes/subscribedStocksRoutes.js";
 import marketNewsRouter from "./routes/marketNewsRoutes.js";
+import OAuth2Router from "./routes/OAuth2Routes.js";
 
 
 const port = process.env.PORT || 5001;
@@ -25,6 +26,7 @@ app.use("/transactions", trasactionRoutes);
 app.use("/tips", tipsRoutes);
 app.use("/subscribed-stocks", subscribedStocksRoutes);
 app.use("/news", marketNewsRouter);
+app.use("/OAuth2", OAuth2Router);
 
 
 // Starting the server only if it isn't in a test environment
