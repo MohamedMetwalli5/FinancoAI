@@ -28,7 +28,7 @@ const Home = () => {
       localStorage.setItem('authToken', token);
       setSharedUserEmail(email);
       setSharedUserName(name);
-      setSignedinWithSpotify(true);
+      setSignedinWithSpotify("true");
       navigate("/dashboard"); // to hide the displayed token and email displaying from the URL
     }
   }, [setSharedUserEmail]);

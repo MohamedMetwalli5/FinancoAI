@@ -16,7 +16,7 @@ const DataProvider = ({ children }) => {
 
     // Retrieving the initial value from local storage or set it to false
     const [signedinWithSpotify, setSignedinWithSpotify] = useState(() => {
-        return localStorage.getItem('signedinWithSpotify') || false;
+        return localStorage.getItem('signedinWithSpotify') || "false";
     });
 
     // Retrieving the initial value from local storage or set it to an empty array

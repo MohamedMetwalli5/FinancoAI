@@ -81,7 +81,7 @@ const Settings = () => {
     >
       <h2 className="text-2xl font-semibold mb-4">Profile Settings</h2>
       
-      {!signedinWithSpotify && 
+      {signedinWithSpotify === "false" && 
         <>
         <div className="flex items-center gap-3 mb-4">
           <label htmlFor="username" className="w-24">User Name</label>
